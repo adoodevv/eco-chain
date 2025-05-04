@@ -1,167 +1,285 @@
 'use client'
-
-import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react";
-import { FaChevronRight } from "react-icons/fa";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { AiOutlineClose } from "react-icons/ai";
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { BurgerIcon, CloseIcon, PlusIcon } from "@/constants/Icons"
 
 const Navbar = () => {
-   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-   const [activeDropdown, setActiveDropdown] = useState<DropdownKey | null>(null);
-   const [openDropdown, setOpenDropdown] = useState<keyof DropdownMenus | null>(null);
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+   const [activeDesktopItem, setActiveDesktopItem] = useState<string | null>(null);
+   const [isHovering, setIsHovering] = useState(false);
+   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+   const [lastScrollY, setLastScrollY] = useState(0);
 
-   const dropdownMenus = {
-      build: [
-         { title: "Ecosystem Fund", href: "/blog/slug1" },
-         { title: "Docs", href: "/blog/slug2" },
-         { title: "Mainnet Hub", href: "/blog/slug3" },
-         { title: "Testnet Hub", href: "/blog/slug4" },
-         { title: "Block Explorer", href: "/blog/slug5" },
-         { title: "EcoChain Portal", href: "/blog/slug6" },
-      ],
+   const menuItems = [
+      {
+         id: 'build',
+         title: 'Build',
+         submenu: [
+            { title: 'Ecosystem Fund', href: '/blog/slug1' },
+            { title: 'Docs', href: '/blog/slug2' },
+            { title: 'Mainnet Hub', href: '/blog/slug3' },
+            { title: 'Testnet Hub', href: '/blog/slug4' },
+            { title: 'Block Explorer', href: '/blog/slug5' },
+            { title: 'EcoChain Portal', href: '/blog/slug6' },
+         ]
+      },
+   ];
+
+   const handleMobileItemClick = (itemId: string): void => {
+      setExpandedItem(expandedItem === itemId ? null : itemId);
    };
 
-   type DropdownKey = keyof typeof dropdownMenus;
-
-   interface DropdownMenu {
-      title: string;
-      href: string;
-   }
-
-   interface DropdownMenus {
-      build: DropdownMenu[];
-   }
-
-   const toggleMobileMenu = () => {
-      setMobileMenuOpen(!mobileMenuOpen);
+   const handleDesktopItemHover = (itemId: string): void => {
+      setActiveDesktopItem(itemId);
+      setIsHovering(true);
    };
 
-   const handleMouseEnter = (dropdown: DropdownKey) => {
-      setActiveDropdown(dropdown);
+   const handleDesktopItemLeave = (): void => {
+      setIsHovering(false);
+      setTimeout(() => {
+         if (!isHovering) {
+            setActiveDesktopItem(null);
+         }
+      }, 300);
    };
 
-   const handleMouseLeave = () => {
-      setActiveDropdown(null);
+   const handleDropdownHover = (): void => {
+      setIsHovering(true);
    };
 
-   const toggleDropdown = (key: keyof DropdownMenus) => {
-      setOpenDropdown(openDropdown === key ? null : key);
+   const handleDropdownLeave = (): void => {
+      setIsHovering(false);
+      setActiveDesktopItem(null);
    };
+
+   useEffect(() => {
+      const handleScroll = () => {
+         const currentScrollY = window.scrollY;
+         if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            setIsNavbarVisible(false);
+         } else {
+            setIsNavbarVisible(true);
+         }
+         setLastScrollY(currentScrollY);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+   }, [lastScrollY]);
 
    return (
-      <div className="flex justify-between items-center px-4 sm:px-8 md:px-12 py-4 bg-black text-white">
-         <div className="flex items-center">
-            {/* <Image
-               src="/logo.png"
-               alt="Logo"
-               width={50}
-               height={50}
-               className="mr-2"
-            /> */}
-            <Link href='/' className="text-[20px] sm:text-[24px] text-[#00EE7D] poppins-logo">EcoChain</Link>
-         </div>
-         <nav className="hidden md:flex">
-            <ul className="flex space-x-8 lg:space-x-[120px] text-[16px] lg:text-[18px] poppins-nav">
-               <li>
-                  <Link href="/" className="text-white flex items-center gap-1 rounded-md px-4 py-2 hover:bg-white/10 transition-all">
-                     Explore
-                  </Link>
-               </li>
-               <li
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter("build")}
-                  onMouseLeave={handleMouseLeave}
-               >
-                  <span className="cursor-pointer group text-white flex items-center rounded-md px-4 py-2 hover:bg-white/10 transition-all">
-                     Build
-                     <FaChevronRight className={`h-3 w-3 transition-transform ${activeDropdown === "build" ? "rotate-90" : ""} duration-300 ml-2`} />
-                  </span>
-                  {activeDropdown === "build" && (
-                     <div className="absolute top-full left-0 w-48 py-2 z-50">
-                        {dropdownMenus.build.map((item) => (
-                           <Link
-                              key={item.href}
-                              href={item.href}
-                              className="block text-white px-4 py-3 text-sm bg-black rounded-md mb-2 hover:shadow-md shadow-[#0CD57633] transition-all"
-                           >
-                              {item.title}
-                           </Link>
-                        ))}
-                     </div>
-                  )}
-               </li>
-               <li>
-                  <Link href="/bridge" className="text-white flex items-center gap-1 rounded-md px-4 py-2 hover:bg-white/10 transition-all">
-                     Bridge
-                  </Link>
-               </li>
-            </ul>
-         </nav>
+      <>
+         <header
+            className={`z-[99] w-full h-24 md:h-[100px] bg-black flex items-center justify-between px-4 md:px-8 fixed top-0 transition-transform duration-300 ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"}`}
+         >
+            <div className="absolute inset-0 bg-gradient-to-b from-black to-black/0 w-full h-24 md:h-[100px]" />
 
-         <div className="hidden md:block">
-         </div>
+            {/* Desktop menu */}
+            <div className="hidden md:block z-10">
+               <Link href='/' className="text-[24px] text-[#00EE7D] poppins-logo">EcoChain</Link>
+            </div>
 
-         <div className="md:hidden">
-            <HiOutlineMenuAlt3 className="h-8 w-8 text-white" onClick={toggleMobileMenu} />
-         </div>
-
-         {mobileMenuOpen && <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-40"></div>}
-         {mobileMenuOpen && (
-            <div className="fixed top-0 right-0 w-[280px] sm:w-[320px] h-full bg-black text-white z-50 shadow-lg overflow-y-auto">
-               <div className="flex justify-between items-center px-4 sm:px-6 py-4 sm:py-6">
-                  <Link href="/">
-                     {/* <Image
-                        src="/logo.png"
-                        alt="Logo"
-                        width={100}
-                        height={100}
-                        className="inline-block"
-                     /> */}
-                     <p className="text-[20px] sm:text-[24px] text-[#00EE7D] poppins-logo">EcoChain</p>
-                  </Link>
-                  <button onClick={toggleMobileMenu} className="text-2xl rounded-full p-2 bg-white/10">
-                     <AiOutlineClose />
-                  </button>
-               </div>
-               <ul className="mt-8 sm:mt-10 text-base sm:text-lg px-4 sm:px-6">
-                  <li className="mb-4">
-                     <Link href="/" className="text-white flex items-center px-4 py-4 border-b border-white/10">
+            <nav className="hidden md:flex items-center justify-center space-x-8 z-10">
+               <ul className="flex items-center space-x-22 uppercase poppins-nav">
+                  <li>
+                     <Link href="/" className="text-white hover:text-[#00EE7D] transition-all duration-300 uppercase text-xl">
                         Explore
                      </Link>
                   </li>
-                  <li className="mb-4">
-                     <Link href="/bridge" className="text-white flex items-center px-4 py-4 border-b border-white/10">
+                  {menuItems.map(item => (
+                     <li
+                        key={item.id}
+                        onMouseEnter={() => handleDesktopItemHover(item.id)}
+                        onMouseLeave={handleDesktopItemLeave}
+                     >
+                        <h2 className={`cursor-pointer text-white ${activeDesktopItem === item.id ? 'text-[#00EE7D]' : ''} hover:text-[#00EE7D] transition-opacity duration-300 text-xl`}>
+                           {item.title}
+                        </h2>
+                     </li>
+                  ))}
+                  <li>
+                     <Link href="/bridge" className="text-white hover:text-[#00EE7D] transition-all duration-300 uppercase text-xl">
                         Bridge
                      </Link>
                   </li>
-                  <li
-                     className="relative mb-4"
-                     onClick={() => toggleDropdown("build")}
-                  >
-                     <span className="cursor-pointer group text-white flex items-center px-4 py-4 border-b border-white/10">
-                        Build
-                        <FaChevronRight className={`h-3 w-3 transition-transform ${openDropdown === "build" ? "rotate-90" : ""} duration-300 ml-2`} />
-                     </span>
-                     {openDropdown === "build" && (
-                        <div className="absolute top-full left-0 w-full py-2 z-50 bg-black">
-                           {dropdownMenus.build.map((item) => (
-                              <Link
-                                 key={item.href}
-                                 href={item.href}
-                                 className="block text-white px-4 py-3 text-sm rounded-md mb-2 hover:shadow-md shadow-[#0CD57633] transition-all"
-                              >
-                                 {item.title}
-                              </Link>
-                           ))}
-                        </div>
-                     )}
-                  </li>
                </ul>
+            </nav>
+
+            {/* Not visible icon to make desktop menu centered */}
+            <div className="hidden md:block opacity-0">
+               <p className="text-[24px] text-[#00EE7D] poppins-logo"></p>
             </div>
-         )}
-      </div>
+
+            {/* Mobile menu button */}
+            <button
+               onClick={() => setIsMobileMenuOpen(true)}
+               className="md:hidden group z-20 p-1.5 transition-colors duration-300 ease-in-out hover:bg-white/20 rounded"
+               aria-label="Open menu button"
+               id="hamburgerButton"
+            >
+               <BurgerIcon className="stroke-white stroke-2" />
+            </button>
+
+            {/* Logo - Mobile */}
+            <Link href='/' className="md:hidden z-10 text-[30px] text-[#00EE7D] poppins-logo">EcoChain</Link>
+
+            {/* Not visible logo to make logo centered on mobile */}
+            <button
+               className="md:hidden group z-20 p-1.5 transition-colors duration-300 ease-in-out hover:bg-white/20 rounded"
+               aria-label="Placeholder button"
+            >
+               <BurgerIcon className="stroke-none stroke-2" />
+            </button>
+
+            {/* Mobile menu with animation */}
+            <AnimatePresence>
+               {isMobileMenuOpen && (
+                  <motion.div
+                     className="fixed inset-0 z-50 md:hidden bg-black min-h-screen overflow-y-auto w-screen flex flex-col"
+                     initial={{ x: "-100%" }}
+                     animate={{ x: 0 }}
+                     exit={{ x: "-100%" }}
+                     transition={{ type: "tween", duration: 0.3 }}
+                  >
+
+                     {/* Header section */}
+                     <div className="flex items-center justify-between border-b border-white/20 p-6">
+                        <button
+                           onClick={() => setIsMobileMenuOpen(false)}
+                           className="flex items-center gap-2"
+                        >
+                           <CloseIcon className="group fill-[#00EE7D] h-[16px] w-[16px]" />
+                           <span className="uppercase text-[#00EE7D] text-xs poppins-logo">Close</span>
+                        </button>
+                        <Link
+                           href='/'
+                           className="text-[30px] text-[#00EE7D] poppins-logo"
+                           onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                           EcoChain
+                        </Link>
+                        <div className="w-[68px]"></div>
+                     </div>
+
+                     {/* Menu items section */}
+                     <div className="flex-1 flex flex-col p-6">
+                        <ul className="space-y-6">
+                           <li>
+                              <button className="w-full flex items-center justify-between py-2">
+                                 <Link
+                                    href="/"
+                                    className="uppercase text-5xl font-medium text-white poppins-nav"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                 >
+                                    Explore
+                                 </Link>
+                              </button>
+                           </li>
+                           {menuItems.map(item => (
+                              <li key={item.id}>
+                                 <div className="flex items-center justify-between poppins-nav">
+                                    <button
+                                       className="w-full flex items-center justify-between py-2"
+                                       onClick={() => handleMobileItemClick(item.id)}
+                                    >
+                                       <h2 className="uppercase text-5xl text-white">
+                                          {item.title}
+                                       </h2>
+                                       <PlusIcon
+                                          className={`transition-transform duration-300 ${expandedItem === item.id ? "rotate-45" : ""}`}
+                                       />
+                                    </button>
+                                 </div>
+                                 <AnimatePresence>
+                                    {expandedItem === item.id && (
+                                       <motion.ul
+                                          initial={{ height: 0, opacity: 0 }}
+                                          animate={{ height: "auto", opacity: 1 }}
+                                          exit={{ height: 0, opacity: 0 }}
+                                          transition={{ duration: 0.3 }}
+                                          className="pl-4 space-y-6 mt-2"
+                                       >
+                                          {item.submenu.map((subItem, index) => (
+                                             <motion.li
+                                                key={index}
+                                                initial={{ x: -20, opacity: 0 }}
+                                                animate={{ x: 0, opacity: 1 }}
+                                                transition={{ delay: index * 0.15 }}
+                                             >
+                                                <Link
+                                                   href={subItem.href}
+                                                   className="text-xl text-white poppins-heading"
+                                                   onClick={() => setIsMobileMenuOpen(false)}
+                                                >
+                                                   {subItem.title}
+                                                </Link>
+                                             </motion.li>
+                                          ))}
+                                       </motion.ul>
+                                    )}
+                                 </AnimatePresence>
+                              </li>
+                           ))}
+                           <li>
+                              <button className="w-full flex items-center justify-between py-2">
+                                 <Link
+                                    href="/bridge"
+                                    className="uppercase text-5xl text-white poppins-nav"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                 >
+                                    Bridge
+                                 </Link>
+                              </button>
+                           </li>
+                        </ul>
+                     </div>
+                  </motion.div>
+               )}
+            </AnimatePresence>
+         </header>
+
+         {/* Desktop dropdown menu */}
+         <AnimatePresence>
+            {activeDesktopItem && (
+               <>
+                  <motion.div
+                     className="fixed flex gap-4 top-[100px] left-0 w-full bg-linear-to-br from-[#D4FFE1]/50 via-[#9DFF8A]/50 to-[#07FF89]/80 z-[98] px-4 md:px-6 pb-10 backdrop-blur-md"
+                     initial={{ height: 0, opacity: 0 }}
+                     animate={{ height: "auto", opacity: 1 }}
+                     exit={{ height: 0, opacity: 0 }}
+                     transition={{ duration: 0.3 }}
+                     onMouseEnter={handleDropdownHover}
+                     onMouseLeave={handleDropdownLeave}
+                  >
+                     <h1 className="text-9xl lg:text-[170px] leading-tight uppercase text-white poppins-h1">{activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.title}</h1>
+                     <div className="px-8 w-2/5">
+                        <ul className="mt-6 grid grid-flow-col grid-rows-4 gap-2">
+                           {activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.submenu.map((subItem, index) => (
+                              <motion.li
+                                 key={index}
+                                 initial={{ y: 20, opacity: 0 }}
+                                 animate={{ y: 0, opacity: 1 }}
+                                 transition={{ delay: index * 0.1 }}
+                              >
+                                 <Link href={subItem.href} className="text-xl lg:text-2xl uppercase text-white hover:text-black/70 poppins-nav transition-all duration-300">{subItem.title}</Link>
+                              </motion.li>
+                           ))}
+                        </ul>
+                     </div>
+                  </motion.div>
+                  <motion.div
+                     className="fixed inset-0 bg-black/20 z-[97] backdrop-blur-xl"
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     exit={{ opacity: 0 }}
+                     onClick={handleDropdownLeave}
+                  />
+               </>
+            )}
+         </AnimatePresence>
+      </>
    )
 }
 

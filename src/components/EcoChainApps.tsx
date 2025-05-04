@@ -48,9 +48,9 @@ const EcoChainApps = () => {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
                <h2 className="text-[40px] sm:text-[52px] md:text-[68px] poppins-h1 font-bold text-white">EcoChain Apps</h2>
                <Link href="/apps">
-                  <span className="text-[18px] sm:text-[20px] md:text-[22px] pretendard-p text-gray-300 hover:underline flex items-center gap-1">
+                  <span className="group text-[18px] sm:text-[20px] md:text-[22px] pretendard-p text-gray-300 flex items-center gap-1">
                      Browse all apps
-                     <FaChevronRight className="h-3 w-3 ml-1 text-white" />
+                     <FaChevronRight className="h-3 w-3 ml-1 text-white group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                </Link>
             </div>
