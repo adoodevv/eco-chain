@@ -78,13 +78,13 @@ const Navbar = () => {
 
             {/* Desktop menu */}
             <div className="hidden md:block z-10">
-               <Link href='/' className="text-[24px] text-[#00EE7D] poppins-logo">EcoChain</Link>
+               <Link href='/' className="manuka-bold text-5xl text-[#00EE7D] poppins-logo uppercase">EcoChain</Link>
             </div>
 
             <nav className="hidden md:flex items-center justify-center space-x-8 z-10">
-               <ul className="flex items-center space-x-22 uppercase poppins-nav">
+               <ul className="flex items-center space-x-22 uppercase manuka-bold text-3xl">
                   <li>
-                     <Link href="/" className="text-white hover:text-[#00EE7D] transition-all duration-300 uppercase text-xl">
+                     <Link href="/" className="text-white hover:text-[#00EE7D] transition-all duration-300">
                         Explore
                      </Link>
                   </li>
@@ -94,13 +94,13 @@ const Navbar = () => {
                         onMouseEnter={() => handleDesktopItemHover(item.id)}
                         onMouseLeave={handleDesktopItemLeave}
                      >
-                        <h2 className={`cursor-pointer text-white ${activeDesktopItem === item.id ? 'text-[#00EE7D]' : ''} hover:text-[#00EE7D] transition-opacity duration-300 text-xl`}>
+                        <h2 className={`cursor-pointer text-white hover:text-[#00EE7D] transition-all duration-300`}>
                            {item.title}
                         </h2>
                      </li>
                   ))}
                   <li>
-                     <Link href="/bridge" className="text-white hover:text-[#00EE7D] transition-all duration-300 uppercase text-xl">
+                     <Link href="/bridge" className="text-white hover:text-[#00EE7D] transition-all duration-300">
                         Bridge
                      </Link>
                   </li>
@@ -109,7 +109,7 @@ const Navbar = () => {
 
             {/* Not visible icon to make desktop menu centered */}
             <div className="hidden md:block opacity-0">
-               <p className="text-[24px] text-[#00EE7D] poppins-logo"></p>
+               <p className="text-5xl text-[#00EE7D] manuka-bold uppercase w-2"></p>
             </div>
 
             {/* Mobile menu button */}
@@ -123,7 +123,7 @@ const Navbar = () => {
             </button>
 
             {/* Logo - Mobile */}
-            <Link href='/' className="md:hidden z-10 text-[30px] text-[#00EE7D] poppins-logo">EcoChain</Link>
+            <Link href='/' className="md:hidden z-10 text-4xl text-[#00EE7D] manuka-bold uppercase">EcoChain</Link>
 
             {/* Not visible logo to make logo centered on mobile */}
             <button
@@ -151,11 +151,11 @@ const Navbar = () => {
                            className="flex items-center gap-2"
                         >
                            <CloseIcon className="group fill-[#00EE7D] h-[16px] w-[16px]" />
-                           <span className="uppercase text-[#00EE7D] text-xs poppins-logo">Close</span>
+                           <span className="uppercase text-[#00EE7D] text-lg manuka-bold">Close</span>
                         </button>
                         <Link
                            href='/'
-                           className="text-[30px] text-[#00EE7D] poppins-logo"
+                           className="text-4xl text-[#00EE7D] manuka-bold uppercase"
                            onClick={() => setIsMobileMenuOpen(false)}
                         >
                            EcoChain
@@ -165,12 +165,12 @@ const Navbar = () => {
 
                      {/* Menu items section */}
                      <div className="flex-1 flex flex-col p-6">
-                        <ul className="space-y-6">
+                        <ul className="space-y-2 manuka-bold text-6xl text-white">
                            <li>
                               <button className="w-full flex items-center justify-between py-2">
                                  <Link
                                     href="/"
-                                    className="uppercase text-5xl font-medium text-white poppins-nav"
+                                    className="uppercase"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                  >
                                     Explore
@@ -179,12 +179,12 @@ const Navbar = () => {
                            </li>
                            {menuItems.map(item => (
                               <li key={item.id}>
-                                 <div className="flex items-center justify-between poppins-nav">
+                                 <div className="flex items-center justify-between">
                                     <button
                                        className="w-full flex items-center justify-between py-2"
                                        onClick={() => handleMobileItemClick(item.id)}
                                     >
-                                       <h2 className="uppercase text-5xl text-white">
+                                       <h2 className="uppercase">
                                           {item.title}
                                        </h2>
                                        <PlusIcon
@@ -199,7 +199,7 @@ const Navbar = () => {
                                           animate={{ height: "auto", opacity: 1 }}
                                           exit={{ height: 0, opacity: 0 }}
                                           transition={{ duration: 0.3 }}
-                                          className="pl-4 space-y-6 mt-2"
+                                          className="pl-4"
                                        >
                                           {item.submenu.map((subItem, index) => (
                                              <motion.li
@@ -210,7 +210,7 @@ const Navbar = () => {
                                              >
                                                 <Link
                                                    href={subItem.href}
-                                                   className="text-xl text-white poppins-heading"
+                                                   className="text-3xl uppercase text-white"
                                                    onClick={() => setIsMobileMenuOpen(false)}
                                                 >
                                                    {subItem.title}
@@ -226,7 +226,7 @@ const Navbar = () => {
                               <button className="w-full flex items-center justify-between py-2">
                                  <Link
                                     href="/bridge"
-                                    className="uppercase text-5xl text-white poppins-nav"
+                                    className="uppercase"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                  >
                                     Bridge
@@ -245,7 +245,7 @@ const Navbar = () => {
             {activeDesktopItem && (
                <>
                   <motion.div
-                     className="fixed flex gap-4 top-[100px] left-0 w-full bg-linear-to-br from-[#D4FFE1]/50 via-[#9DFF8A]/50 to-[#07FF89]/80 z-[98] px-4 md:px-6 pb-10 backdrop-blur-md"
+                     className="fixed flex items-center gap-4 top-18 left-0 w-full bg-linear-to-br from-[#D4FFE1]/50 via-[#9DFF8A]/50 to-[#07FF89]/80 z-[98] px-4 md:px-6 pb-10 backdrop-blur-md"
                      initial={{ height: 0, opacity: 0 }}
                      animate={{ height: "auto", opacity: 1 }}
                      exit={{ height: 0, opacity: 0 }}
@@ -253,9 +253,9 @@ const Navbar = () => {
                      onMouseEnter={handleDropdownHover}
                      onMouseLeave={handleDropdownLeave}
                   >
-                     <h1 className="text-9xl lg:text-[170px] leading-tight uppercase text-white poppins-h1">{activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.title}</h1>
+                     <h1 className="text-9xl lg:text-[270px] leading-tight uppercase text-white">{activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.title}</h1>
                      <div className="px-8 w-2/5">
-                        <ul className="mt-6 grid grid-flow-col grid-rows-4 gap-2">
+                        <ul className="grid grid-flow-col grid-rows-4 gap-2">
                            {activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.submenu.map((subItem, index) => (
                               <motion.li
                                  key={index}
@@ -263,7 +263,7 @@ const Navbar = () => {
                                  animate={{ y: 0, opacity: 1 }}
                                  transition={{ delay: index * 0.1 }}
                               >
-                                 <Link href={subItem.href} className="text-xl lg:text-2xl uppercase text-white hover:text-black/70 poppins-nav transition-all duration-300">{subItem.title}</Link>
+                                 <Link href={subItem.href} className="text-3xl lg:text-5xl manuka-bold uppercase text-white hover:text-black/70 transition-all duration-300">{subItem.title}</Link>
                               </motion.li>
                            ))}
                         </ul>

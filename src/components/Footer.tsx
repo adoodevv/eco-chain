@@ -1,43 +1,79 @@
 import Link from 'next/link';
-import { BsTwitterX } from "react-icons/bs";
-import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bg-black text-white py-8 sm:py-12 px-4 sm:px-6 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0">
-      <div className="text-[#00EE7D] text-[20px] sm:text-[24px] poppins-h1">
-        EcoChain
+    <div className="flex flex-col bg-gradient-to-bl from-[#032a1c] via-black to-[#032a1c] px-8 pt-12 pb-0">
+      <div className="mx-auto w-full flex flex-col items-center">
+        <div className="flex flex-col md:flex-row justify-end items-start gap-12 lg:gap-42 w-full lg:px-32 pb-4">
+          <div className="text-white uppercase">
+            <h1 className="font-manuka text-2xl md:text-3xl">Build on ecochain</h1>
+            <ul className="flex flex-col gap-2 mt-3 text-sm">
+              <li className="hover:underline">
+                <Link href="/">Docs</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Mainnet Hub</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Testnet Hub</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">EcoChain Portal</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="text-white uppercase">
+            <h1 className="font-manuka text-2xl md:text-3xl">ecochain</h1>
+            <ul className="flex flex-col gap-2 mt-3 text-sm">
+              <li className="hover:underline">
+                <Link href="/">Bridge</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Relay Bridge</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Ecosystem Fund</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Telegram</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Twitter / X</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="text-white uppercase">
+            <h1 className="font-manuka text-2xl md:text-3xl">Community</h1>
+            <ul className="flex flex-col gap-2 mt-3 text-sm">
+              <li className="hover:underline">
+                <Link href="/">Discord</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Forum</Link>
+              </li>
+              <li className="hover:underline">
+                <Link href="/">Blog</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className="pretendard-p text-[12px] sm:text-[14px] text-center sm:text-left">
-        <p>
-          copyright  © {new Date().getFullYear()} EcoChain. All rights reserved.
-        </p>
+
+      <div className="w-full flex justify-center items-end pb-4">
+        <div className="text-white uppercase manuka-bold text-center w-full text-9xl lg:text-[600px] leading-none tracking-[0.06em] lg:tracking-[0.08em] pointer-events-none">
+          ecochain
+        </div>
       </div>
-      <div className="flex space-x-4 sm:space-x-6 items-center">
-        <Link href="https://www.github.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-[#00EE7D] transition-colors">
-          <FaGithub className="h-[16px] w-[16px] sm:h-[18px] sm:w-[18px]" />
-        </Link>
-        <Link href="https://www.instagram.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-[#00EE7D] transition-colors">
-          <FaFacebook className="h-[16px] w-[16px] sm:h-[18px] sm:w-[18px]" />
-        </Link>
-        <Link href="https://x.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-[#00EE7D] transition-colors">
-          <BsTwitterX className="h-[14px] w-[14px] sm:h-[16px] sm:w-[16px]" />
-        </Link>
-        <Link href="https://www.facebook.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-[#00EE7D] transition-colors">
-          <FaInstagram className="h-[16px] w-[16px] sm:h-[18px] sm:w-[18px]" />
-        </Link>
+
+      <div className="mx-auto w-full pb-6">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white opacity-80">
+          <div className="normal-case">2025 © EcoChain. All rights reserved.</div>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
+            <span>|</span>
+            <Link href="/terms-of-service" className="hover:underline">Terms of Service</Link>
+          </div>
+        </div>
       </div>
     </div>
   )

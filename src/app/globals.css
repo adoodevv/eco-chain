@@ -1,79 +1,78 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Poppins";
-  font-style: normal;
-  src: url('/fonts/Poppins/Poppins-Regular.ttf') format("truetype");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Poppins";
-  font-style: normal;
-  src: url('/fonts/Poppins/Poppins-Medium.ttf') format("truetype");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Poppins";
-  font-style: normal;
-  src: url('/fonts/Poppins/Poppins-SemiBold.ttf') format("truetype");
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Poppins";
-  font-style: normal;
-  src: url('/fonts/Poppins/Poppins-Bold.ttf') format("truetype");
+  font-family: "Manuka";
+  src: url('/fonts/Manuka-Bold.otf') format('opentype');
   font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Pretendard";
-  font-style: normal;
-  src: url('/fonts/pretendard/PretendardVariable.ttf') format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-.pretendard-p {
-  font-family: "Pretendard", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-family: "Manuka";
+  src: url('/fonts/Manuka-Black.otf') format('opentype');
+  font-weight: 900;
   font-style: normal;
 }
 
-.poppins-slide {
-  font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
+@font-face {
+  font-family: "Manuka";
+  src: url('/fonts/Manuka-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
 }
 
-.poppins-heading {
-  font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
+@font-face {
+  font-family: "Manuka";
+  src: url('/fonts/Manuka-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
-.poppins-logo {
-  font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
+@font-face {
+  font-family: "Manuka";
+  src: url('/fonts/Manuka-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+.manuka-black {
+  font-family: "Manuka", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.manuka-bold {
+  font-family: "Manuka", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
-.poppins-nav {
-  font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
+.manuka-light {
+  font-family: "Manuka", sans-serif;
+  font-weight: 300;
   font-style: normal;
 }
 
-.poppins-h1 {
-  font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
+.manuka-regular {
+  font-family: "Manuka", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.manuka-thin {
+  font-family: "Manuka", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Manuka", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "Manuka", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
