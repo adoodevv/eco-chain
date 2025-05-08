@@ -90,7 +90,7 @@ const EcoChainApps = () => {
 };
 
 const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => (
-   <div className={`rounded-xl overflow-hidden w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
+   <div className={`rounded-xl border-4 border-[#032a1c] overflow-hidden w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
       <div className="relative w-full h-full">
          <img
             src={app.image}
@@ -101,8 +101,8 @@ const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => (
             {app.tag}
          </span>
          <div className="absolute bottom-3 left-3 text-white">
-            <h1 className="text-xl md:text-2xl uppercase font-medium">{app.title}</h1>
-            <p className="text-sm text-gray-400 uppercase">{app.description}</p>
+            <h1 className="text-2xl md:text-4xl uppercase">{app.title}</h1>
+            <p className="text-sm uppercase">{app.description}</p>
          </div>
       </div>
    </div>

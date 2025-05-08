@@ -32,11 +32,11 @@ const DifferenceSection = () => {
                {features.map((feature, index) => (
                   <div
                      key={index}
-                     className="bg-white/10 border border-[#00EE7D] rounded-lg px-4 sm:px-6 py-8 sm:py-12 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300"
+                     className="bg-white/10 border-4 border-[#032a1c] rounded-lg px-4 sm:px-6 py-8 sm:py-12 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300"
                   >
                      <div className="mb-4">{feature.img}</div>
-                     <h3 className="text-[24px] sm:text-[28px] md:text-[32px] poppins-h1 font-semibold mb-2">{feature.title}</h3>
-                     <p className="text-[14px] sm:text-[16px] md:text-[18px] pretendard-p text-gray-300 leading-relaxed">{feature.description}</p>
+                     <h3 className="text-3xl md:text-4xl manuka-bold mb-2">{feature.title}</h3>
+                     <p className="text-base text-gray-300 leading-relaxed">{feature.description}</p>
                   </div>
                ))}
             </div>
