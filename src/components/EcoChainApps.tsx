@@ -1,84 +1,111 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import { FaChevronRight } from "react-icons/fa";
+import 'keen-slider/keen-slider.min.css';
+import { useKeenSlider } from 'keen-slider/react';
 
 const apps = [
-   {
-      title: 'App name',
-      description: 'one line description',
-      tag: 'Sustainability',
-      image: '/images/app1.jpg',
-   },
-   {
-      title: 'App name',
-      description: 'one line description',
-      tag: 'Green tech',
-      image: '/images/app2.jpg',
-   },
-   {
-      title: 'App name',
-      description: 'one line description',
-      tag: 'Sustainability',
-      image: '/images/app1.jpg',
-   },
-   {
-      title: 'App name',
-      description: 'one line description',
-      tag: 'Finance',
-      image: '/images/app2.jpg',
-   },
-   {
-      title: 'App name',
-      description: 'one line description',
-      tag: 'Climate',
-      image: '/images/app1.jpg',
-   },
-   {
-      title: 'App name',
-      description: 'one line description',
-      tag: 'Sustainability',
-      image: '/images/app2.jpg',
-   },
+   { title: 'Otherside', description: 'Web3 worlds', tag: 'Games', image: '/images/app1.jpg' },
+   { title: 'Made by Apes', description: 'Builders club', tag: 'IP', image: '/images/app2.jpg' },
+   { title: 'Camelot', description: 'DEX', tag: 'Finance', image: '/images/app1.jpg' },
+   { title: 'Magic Eden', description: 'NFTs', tag: 'Collectibles', image: '/images/app2.jpg' },
+   { title: 'APE Portal', description: 'Get on Apechain', tag: 'Infrastructure', image: '/images/app1.jpg' },
+   { title: 'Blever', description: 'Launchpad', tag: 'Collectibles', image: '/images/app2.jpg' },
+   { title: 'Apescan', description: 'Block explorer', tag: 'Infrastructure', image: '/images/app1.jpg' },
+   { title: 'Otherside', description: 'Web3 worlds', tag: 'Games', image: '/images/app1.jpg' },
+   { title: 'Made by Apes', description: 'Builders club', tag: 'IP', image: '/images/app2.jpg' },
+   { title: 'Camelot', description: 'DEX', tag: 'Finance', image: '/images/app1.jpg' },
+   { title: 'Magic Eden', description: 'NFTs', tag: 'Collectibles', image: '/images/app2.jpg' },
+   { title: 'APE Portal', description: 'Get on Apechain', tag: 'Infrastructure', image: '/images/app1.jpg' },
 ];
 
+interface App {
+   title: string;
+   description: string;
+   tag: string;
+   image: string;
+}
+
+const chunkApps = (apps: App[]) => {
+   const chunks = [];
+   for (let i = 0; i < apps.length; i += 5) {
+      const group = apps.slice(i, i + 5);
+      const grid = group.slice(0, 4);
+      const solo = group[4];
+      if (grid.length) chunks.push({ type: 'grid', items: grid });
+      if (solo) chunks.push({ type: 'solo', items: [solo] });
+   }
+   return chunks;
+};
+
 const EcoChainApps = () => {
+   const [sliderRef] = useKeenSlider<HTMLDivElement>({
+      mode: 'free',
+      slides: { perView: 'auto', spacing: 8 },
+      renderMode: 'performance',
+   });
+
+   const chunks = chunkApps(apps);
+
    return (
-      <section className="bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-         <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
-               <h2 className="text-[40px] sm:text-[52px] md:text-[68px] poppins-h1 font-bold text-white">EcoChain Apps</h2>
+      <section className="bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] py-8 md:py-28 overflow-hidden">
+         <div className="mx-auto -mx-4">
+            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
+               <h2 className="text-3xl md:text-5xl uppercase poppins-h1 font-bold text-white">EcoChain Apps</h2>
                <Link href="/apps">
-                  <span className="group text-[18px] sm:text-[20px] md:text-[22px] pretendard-p text-gray-300 flex items-center gap-1">
+                  <span className="group text-sm uppercase text-gray-300 flex items-center gap-1">
                      Browse all apps
                      <FaChevronRight className="h-3 w-3 ml-1 text-white group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-               {apps.map((app, idx) => (
-                  <div key={idx} className="">
-                     <div className="rounded-lg overflow-hidden shadow-md">
-                        <div className="relative w-full h-48 sm:h-56 md:h-64">
-                           <img
-                              src={app.image}
-                              alt={app.title}
-                              className="w-full h-full object-cover"
-                           />
-                           <span className="absolute bottom-2 left-2 bg-white/10 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">
-                              {app.tag}
-                           </span>
+
+            <div ref={sliderRef} className="keen-slider relative lg:px-[310px]">
+               {chunks.map((chunk, index) => {
+                  if (chunk.type === 'grid') {
+                     return (
+                        <div
+                           key={index}
+                           className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] grid grid-cols-2 gap-4"
+                        >
+                           {chunk.items.map((app, idx) => (
+                              <AppCard app={app} key={idx} />
+                           ))}
                         </div>
-                     </div>
-                     <div className="py-3 sm:py-4 text-white">
-                        <h3 className="text-[24px] sm:text-[28px] md:text-[32px] poppins-h1">{app.title}</h3>
-                        <p className="text-[16px] sm:text-[18px] poppins-heading text-gray-400">{app.description}</p>
-                     </div>
-                  </div>
-               ))}
+                     );
+                  } else {
+                     const app = chunk.items[0];
+                     return (
+                        <div key={index} className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] flex items-stretch">
+                           <AppCard app={app} large />
+                        </div>
+                     );
+                  }
+               })}
             </div>
          </div>
       </section>
    );
 };
+
+const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => (
+   <div className={`rounded-xl overflow-hidden w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
+      <div className="relative w-full h-full">
+         <img
+            src={app.image}
+            alt={app.title}
+            className="w-full h-full object-cover"
+         />
+         <span className="absolute top-3 left-3 bg-white/10 text-white text-xs uppercase px-3 py-1 rounded-lg backdrop-blur-sm">
+            {app.tag}
+         </span>
+         <div className="absolute bottom-3 left-3 text-white">
+            <h1 className="text-xl md:text-2xl uppercase font-medium">{app.title}</h1>
+            <p className="text-sm text-gray-400 uppercase">{app.description}</p>
+         </div>
+      </div>
+   </div>
+);
 
 export default EcoChainApps;

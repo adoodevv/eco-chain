@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <div className="flex flex-col bg-gradient-to-bl from-[#032a1c] via-black to-[#032a1c] px-8 pt-12 pb-0">
+    <div className="flex flex-col bg-gradient-to-bl from-[#032a1c] via-black to-[#032a1c] px-4 pt-12 pb-0">
       <div className="mx-auto w-full flex flex-col items-center">
         <div className="flex flex-col md:flex-row justify-end items-start gap-12 lg:gap-42 w-full lg:px-32 pb-4">
           <div className="text-white uppercase">
