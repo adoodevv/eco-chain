@@ -116,7 +116,7 @@ export default function Hero() {
          <div className="absolute inset-0 bg-black opacity-80 pointer-events-none z-0"></div>
          <div className="wrapper">
             <div className="scene w-full md:w-[1275px] h-[1020px] z-10"> {/* Reduced by 15% */}
-               <div className="carousel keen-slider" ref={sliderRef}>
+               <div className="carousel keen-slider mt-16" ref={sliderRef}>
                   {slides.map((slide, index) => (
                      <div key={index} className="carousel__cell w-[1250px] h-[765px]"> {/* Reduced by 15% */}
                         <div className="slide-content">
@@ -129,9 +129,9 @@ export default function Hero() {
 
             <div className="z-20 rotate-z-[6deg] absolute top-0 left-0 w-full h-full flex flex-col justify-end items-start pointer-events-auto">
                <div className="absolute bottom-10 left-4 md:left-10 lg:left-40 text-white">
-                  <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl">{slides[currentSlide].title}</h2>
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-9xl">{slides[currentSlide].title}</h2>
                   <p className="text-xs sm:text-sm uppercase pt-2 pb-4 md:pb-8">{slides[currentSlide].description}</p>
-                  <button className="px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm border-3 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
+                  <button className="px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm border-3 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
                      {slides[currentSlide].buttonText}
                   </button>
                </div>

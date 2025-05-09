@@ -13,13 +13,13 @@ export default function BridgePage() {
    const tabs = ['Bridge', 'Swap', 'Onramp'];
 
    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] text-white">
          {/* Bridge Card */}
          <div className="container mx-auto flex justify-center px-4">
             <div className="relative w-full max-w-md bg-black border border-green-500/50 rounded-lg shadow-lg overflow-hidden">
                {/* Card Title */}
                <div className="pt-6 pb-4 text-center">
-                  <h2 className="poppins-h1 text-xl font-medium text-green-400">Eco Portal</h2>
+                  <h2 className="text-5xl uppercase text-green-400">Eco Portal</h2>
                </div>
 
                {/* Tabs */}

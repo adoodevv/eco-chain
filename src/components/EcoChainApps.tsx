@@ -50,9 +50,9 @@ const EcoChainApps = () => {
 
    return (
       <section className="bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] py-8 md:py-28 overflow-hidden">
-         <div className="mx-auto -mx-4">
+         <div className="mx-auto -mx-4 px-4">
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
-               <h2 className="text-3xl md:text-5xl uppercase poppins-h1 font-bold text-white">EcoChain Apps</h2>
+               <h2 className="text-5xl lg:text-7xl uppercase text-white">EcoChain Apps</h2>
                <Link href="/apps">
                   <span className="group text-sm uppercase text-gray-300 flex items-center gap-1">
                      Browse all apps
@@ -61,7 +61,7 @@ const EcoChainApps = () => {
                </Link>
             </div>
 
-            <div ref={sliderRef} className="keen-slider relative lg:px-[310px]">
+            <div ref={sliderRef} className="keen-slider relative max-w-7xl mx-auto">
                {chunks.map((chunk, index) => {
                   if (chunk.type === 'grid') {
                      return (

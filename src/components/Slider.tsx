@@ -2,59 +2,109 @@
 
 import { useState, useEffect } from 'react';
 import { GiSevenPointedStar } from 'react-icons/gi';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Slider = () => {
-   const slidingText = [
-      "Regenerative Finance",
-      "Green Technology",
-      "Sustainability",
-      "Climate Projects"
+   const slide = [
+      {
+         title: "Regenerative Finance",
+         image: "/images/regenerative-finance.jpg",
+         link: "/regenerative-finance"
+      },
+      {
+         title: "Green Technology",
+         image: "/images/green-technology.png",
+         link: "/green-technology"
+      },
+      {
+         title: "Sustainability",
+         image: "/images/regenerative-finance.jpg",
+         link: "/sustainability"
+      },
+      {
+         title: "Climate Projects",
+         image: "/images/green-technology.png",
+         link: "/climate-projects"
+      }
    ];
 
+   const duplicatedSlides = [...slide, ...slide];
+
    const [position, setPosition] = useState(0);
+   const slideWidth = 200;
 
    useEffect(() => {
       const interval = setInterval(() => {
-         setPosition((prevPosition) => (prevPosition - 1) % (slidingText.length * 200));
-      }, 30);
+         setPosition((prevPosition) => {
+            const newPosition = prevPosition - 2;
+            if (Math.abs(newPosition) >= slide.length * slideWidth) {
+               return 0;
+            }
+            return newPosition;
+         });
+      }, 20);
 
       return () => clearInterval(interval);
-   }, [slidingText.length]);
+   }, [slide.length]);
+
+   const renderSlides = (slides: typeof slide) => (
+      <div className="flex items-center gap-8">
+         {slides.map((item, index) => (
+            <Link href={item.link} key={index} className="flex items-center gap-2 md:gap-4 hover:opacity-100 transition-opacity group">
+               <div className="relative overflow-hidden">
+                  <div className="transition-transform duration-500 group-hover:-translate-y-full">
+                     <h2 className="text-white whitespace-nowrap text-5xl lg:text-9xl leading-none">{item.title}</h2>
+                  </div>
+                  <div className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                     <h2 className="text-[#00EE7D] whitespace-nowrap text-5xl lg:text-9xl leading-none">{item.title}</h2>
+                  </div>
+               </div>
+               <div className="relative w-12 h-12 md:w-24 md:h-24 rounded-2xl overflow-hidden">
+                  <Image
+                     src={item.image}
+                     alt={item.title}
+                     fill
+                     className="object-cover"
+                  />
+               </div>
+            </Link>
+         ))}
+      </div>
+   );
 
    return (
-      <div className="relative">
-         <div className="bg-linear-to-r from-[#D4FFE1]/30 via-[#9DFF8A]/50 to-[#07FF89]/50 py-4 md:py-6 overflow-hidden">
-            <div
-               className="flex items-center gap-20"
-               style={{
-                  transform: `translateX(${-position}px)`,
-               }}
-            >
-               {slidingText.map((text, index) => (
-                  <div key={index} className="flex items-center gap-4 md:gap-8">
-                     <h2 className="text-white whitespace-nowrap text-2xl md:text-4xl lg:text-5xl poppins-slide">{text}</h2>
-                     <GiSevenPointedStar className="text-white h-8 w-8 md:h-12 md:w-12" />
-                  </div>
-               ))}
+      <div className="relative uppercase py-32">
+         <div>
+            <div className="bg-black py-2 overflow-hidden">
+               <div
+                  className="flex items-center"
+                  style={{
+                     transform: `translateX(${position}px)`,
+                  }}
+               >
+                  {renderSlides(duplicatedSlides)}
+                  {renderSlides(duplicatedSlides)}
+               </div>
+            </div>
+            <div className="bg-black py-2 overflow-hidden">
+               <div
+                  className="flex items-center"
+                  style={{
+                     transform: `translateX(${-position}px)`,
+                  }}
+               >
+                  {renderSlides(duplicatedSlides)}
+                  {renderSlides(duplicatedSlides)}
+               </div>
             </div>
          </div>
-         <div className="bg-linear-to-r from-[#07FF89]/50 via-[#9DFF8A]/50 to-[#D4FFE1]/30 py-4 md:py-6 overflow-hidden">
-            <div
-               className="flex items-center gap-20"
-               style={{
-                  transform: `translateX(${position}px)`,
-               }}
-            >
-               {slidingText.map((text, index) => (
-                  <div key={index} className="flex items-center gap-4 md:gap-8">
-                     <h2 className="text-white whitespace-nowrap text-2xl md:text-4xl lg:text-5xl poppins-slide">{text}</h2>
-                     <GiSevenPointedStar className="text-white h-8 w-8 md:h-12 md:w-12" />
-                  </div>
-               ))}
-            </div>
+         <div className="flex justify-center py-12 animate-bounce">
+            <Link href="/" className="px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm border-3 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
+               Browse all apps
+            </Link>
          </div>
       </div>
-
    )
 }
 

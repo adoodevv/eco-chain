@@ -59,15 +59,15 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="w-full flex justify-center items-end pb-4">
-        <div className="text-white uppercase manuka-bold text-center w-full text-9xl lg:text-[600px] leading-none tracking-[0.06em] lg:tracking-[0.08em] pointer-events-none">
+      <div className="w-full flex justify-center items-end pb-4 overflow-hidden">
+        <div className="text-white uppercase manuka-bold text-center w-full text-8xl md:text-[200px] lg:text-[400px] xl:text-[500px] leading-none tracking-[0.06em] lg:tracking-[0.08em] pointer-events-none whitespace-nowrap">
           ecochain
         </div>
       </div>
 
       <div className="mx-auto w-full pb-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white opacity-80">
-          <div className="normal-case">2025 © EcoChain. All rights reserved.</div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 uppercase text-sm text-white opacity-80">
+          <div>2025 © EcoChain. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
             <span>|</span>

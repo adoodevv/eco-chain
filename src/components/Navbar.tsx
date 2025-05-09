@@ -2,15 +2,20 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { usePathname } from "next/navigation"
 import { BurgerIcon, CloseIcon, PlusIcon } from "@/constants/Icons"
 
 const Navbar = () => {
+   const pathname = usePathname()
+   const isHomePage = pathname === '/'
+
    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
    const [expandedItem, setExpandedItem] = useState<string | null>(null);
    const [activeDesktopItem, setActiveDesktopItem] = useState<string | null>(null);
    const [isHovering, setIsHovering] = useState(false);
    const [isNavbarVisible, setIsNavbarVisible] = useState(true);
    const [lastScrollY, setLastScrollY] = useState(0);
+   const [hasScrolled, setHasScrolled] = useState(false);
 
    const menuItems = [
       {
@@ -57,11 +62,17 @@ const Navbar = () => {
    useEffect(() => {
       const handleScroll = () => {
          const currentScrollY = window.scrollY;
-         if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            setIsNavbarVisible(false);
-         } else {
+
+         // Show navbar when scrolling up or at top
+         if (currentScrollY < lastScrollY || currentScrollY < 10) {
             setIsNavbarVisible(true);
+            setHasScrolled(currentScrollY > 10);
          }
+         // Hide navbar when scrolling down past a threshold
+         else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            setIsNavbarVisible(false);
+         }
+
          setLastScrollY(currentScrollY);
       };
 
@@ -72,9 +83,19 @@ const Navbar = () => {
    return (
       <>
          <header
-            className={`z-[99] w-full h-24 md:h-[100px] bg-black flex items-center justify-between px-4 md:px-8 fixed top-0 transition-transform duration-300 ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"}`}
+            className={`z-40 w-full h-24 md:h-[100px] flex items-center justify-between px-4 md:px-8 fixed top-0 transition-all duration-300 ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"
+               } ${isHomePage
+                  ? (!hasScrolled && !activeDesktopItem)
+                     ? "bg-none border-b border-white/20"
+                     : "bg-black border-b border-white/20"
+                  :
+                  "bg-black border-b border-white/20"
+               }`}
          >
-            <div className="absolute inset-0 bg-gradient-to-b from-black to-black/0 w-full h-24 md:h-[100px]" />
+            {/* Gradient overlay - only on homepage when not scrolled */}
+            {isHomePage && (!hasScrolled && !activeDesktopItem) && (
+               <div className="absolute inset-0 bg-gradient-to-b from-black to-black/0 w-full h-24 md:h-[100px]" />
+            )}
 
             {/* Desktop menu */}
             <div className="hidden md:block z-10">
@@ -132,120 +153,119 @@ const Navbar = () => {
             >
                <BurgerIcon className="stroke-none stroke-2" />
             </button>
-
-            {/* Mobile menu with animation */}
-            <AnimatePresence>
-               {isMobileMenuOpen && (
-                  <motion.div
-                     className="fixed inset-0 z-50 md:hidden bg-black min-h-screen overflow-y-auto w-screen flex flex-col"
-                     initial={{ x: "-100%" }}
-                     animate={{ x: 0 }}
-                     exit={{ x: "-100%" }}
-                     transition={{ type: "tween", duration: 0.3 }}
-                  >
-
-                     {/* Header section */}
-                     <div className="flex items-center justify-between border-b border-white/20 p-6">
-                        <button
-                           onClick={() => setIsMobileMenuOpen(false)}
-                           className="flex items-center gap-2"
-                        >
-                           <CloseIcon className="group fill-[#00EE7D] h-[16px] w-[16px]" />
-                           <span className="uppercase text-[#00EE7D] text-lg manuka-bold">Close</span>
-                        </button>
-                        <Link
-                           href='/'
-                           className="text-4xl text-[#00EE7D] manuka-bold uppercase"
-                           onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                           EcoChain
-                        </Link>
-                        <div className="w-[68px]"></div>
-                     </div>
-
-                     {/* Menu items section */}
-                     <div className="flex-1 flex flex-col p-6">
-                        <ul className="space-y-2 manuka-bold text-6xl text-white">
-                           <li>
-                              <button className="w-full flex items-center justify-between py-2">
-                                 <Link
-                                    href="/"
-                                    className="uppercase"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                 >
-                                    Explore
-                                 </Link>
-                              </button>
-                           </li>
-                           {menuItems.map(item => (
-                              <li key={item.id}>
-                                 <div className="flex items-center justify-between">
-                                    <button
-                                       className="w-full flex items-center justify-between py-2"
-                                       onClick={() => handleMobileItemClick(item.id)}
-                                    >
-                                       <h2 className="uppercase">
-                                          {item.title}
-                                       </h2>
-                                       <PlusIcon
-                                          className={`transition-transform duration-300 ${expandedItem === item.id ? "rotate-45" : ""}`}
-                                       />
-                                    </button>
-                                 </div>
-                                 <AnimatePresence>
-                                    {expandedItem === item.id && (
-                                       <motion.ul
-                                          initial={{ height: 0, opacity: 0 }}
-                                          animate={{ height: "auto", opacity: 1 }}
-                                          exit={{ height: 0, opacity: 0 }}
-                                          transition={{ duration: 0.3 }}
-                                          className="pl-4"
-                                       >
-                                          {item.submenu.map((subItem, index) => (
-                                             <motion.li
-                                                key={index}
-                                                initial={{ x: -20, opacity: 0 }}
-                                                animate={{ x: 0, opacity: 1 }}
-                                                transition={{ delay: index * 0.15 }}
-                                             >
-                                                <Link
-                                                   href={subItem.href}
-                                                   className="text-3xl uppercase text-white"
-                                                   onClick={() => setIsMobileMenuOpen(false)}
-                                                >
-                                                   {subItem.title}
-                                                </Link>
-                                             </motion.li>
-                                          ))}
-                                       </motion.ul>
-                                    )}
-                                 </AnimatePresence>
-                              </li>
-                           ))}
-                           <li>
-                              <button className="w-full flex items-center justify-between py-2">
-                                 <Link
-                                    href="/bridge"
-                                    className="uppercase"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                 >
-                                    Bridge
-                                 </Link>
-                              </button>
-                           </li>
-                        </ul>
-                     </div>
-                  </motion.div>
-               )}
-            </AnimatePresence>
          </header>
+
+         {/* Mobile menu with animation */}
+         <AnimatePresence>
+            {isMobileMenuOpen && (
+               <motion.div
+                  className="fixed inset-0 z-50 md:hidden bg-black min-h-screen overflow-y-auto w-screen flex flex-col"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ type: "tween", duration: 0.3 }}
+               >
+                  {/* Header section */}
+                  <div className="flex items-center justify-between border-b border-white/20 p-6">
+                     <button
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center gap-2"
+                     >
+                        <CloseIcon className="group fill-[#00EE7D] h-[16px] w-[16px]" />
+                        <span className="uppercase text-[#00EE7D] text-lg manuka-bold">Close</span>
+                     </button>
+                     <Link
+                        href='/'
+                        className="text-4xl text-[#00EE7D] manuka-bold uppercase"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                     >
+                        EcoChain
+                     </Link>
+                     <div className="w-[68px]"></div>
+                  </div>
+
+                  {/* Menu items section */}
+                  <div className="flex-1 flex flex-col p-6">
+                     <ul className="space-y-2 manuka-bold text-6xl text-white">
+                        <li>
+                           <button className="w-full flex items-center justify-between py-2">
+                              <Link
+                                 href="/"
+                                 className="uppercase"
+                                 onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                 Explore
+                              </Link>
+                           </button>
+                        </li>
+                        {menuItems.map(item => (
+                           <li key={item.id}>
+                              <div className="flex items-center justify-between">
+                                 <button
+                                    className="w-full flex items-center justify-between py-2"
+                                    onClick={() => handleMobileItemClick(item.id)}
+                                 >
+                                    <h2 className="uppercase">
+                                       {item.title}
+                                    </h2>
+                                    <PlusIcon
+                                       className={`transition-transform duration-300 ${expandedItem === item.id ? "rotate-45" : ""}`}
+                                    />
+                                 </button>
+                              </div>
+                              <AnimatePresence>
+                                 {expandedItem === item.id && (
+                                    <motion.ul
+                                       initial={{ height: 0, opacity: 0 }}
+                                       animate={{ height: "auto", opacity: 1 }}
+                                       exit={{ height: 0, opacity: 0 }}
+                                       transition={{ duration: 0.3 }}
+                                       className="pl-4"
+                                    >
+                                       {item.submenu.map((subItem, index) => (
+                                          <motion.li
+                                             key={index}
+                                             initial={{ x: -20, opacity: 0 }}
+                                             animate={{ x: 0, opacity: 1 }}
+                                             transition={{ delay: index * 0.15 }}
+                                          >
+                                             <Link
+                                                href={subItem.href}
+                                                className="text-3xl uppercase text-white"
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                             >
+                                                {subItem.title}
+                                             </Link>
+                                          </motion.li>
+                                       ))}
+                                    </motion.ul>
+                                 )}
+                              </AnimatePresence>
+                           </li>
+                        ))}
+                        <li>
+                           <button className="w-full flex items-center justify-between py-2">
+                              <Link
+                                 href="/bridge"
+                                 className="uppercase"
+                                 onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                 Bridge
+                              </Link>
+                           </button>
+                        </li>
+                     </ul>
+                  </div>
+               </motion.div>
+            )}
+         </AnimatePresence>
 
          {/* Desktop dropdown menu */}
          <AnimatePresence>
             {activeDesktopItem && (
                <>
                   <motion.div
-                     className="fixed flex items-center gap-4 top-18 left-0 w-full bg-linear-to-br from-[#D4FFE1]/50 via-[#9DFF8A]/50 to-[#07FF89]/80 z-[98] px-4 md:px-6 pb-10 backdrop-blur-md"
+                     className="fixed flex items-center gap-4 top-24 left-0 w-full bg-linear-to-br from-[#D4FFE1]/50 via-[#9DFF8A]/50 to-[#07FF89]/80 z-40 px-4 md:px-6 pb-10 backdrop-blur-md"
                      initial={{ height: 0, opacity: 0 }}
                      animate={{ height: "auto", opacity: 1 }}
                      exit={{ height: 0, opacity: 0 }}
@@ -270,7 +290,7 @@ const Navbar = () => {
                      </div>
                   </motion.div>
                   <motion.div
-                     className="fixed inset-0 bg-black/20 z-[97] backdrop-blur-xl"
+                     className="fixed inset-0 bg-black/20 z-30 backdrop-blur-xl"
                      initial={{ opacity: 0 }}
                      animate={{ opacity: 1 }}
                      exit={{ opacity: 0 }}
