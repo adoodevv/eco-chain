@@ -114,7 +114,7 @@ export default function BridgePage() {
                   </div>
 
                   {/* Connect Wallet Button */}
-                  <button className="w-full bg-linear-to-r from-[#96FEB4] via-[#1BDE63] to-[#00FFE6] text-black font-medium py-3 rounded-full transition-colors">
+                  <button className="w-full bg-linear-to-r from-[#96FEB4] via-[#1BDE63] to-[#00FFE6] text-black font-medium py-3 rounded-lg transition-colors">
                      Connect Wallet
                   </button>
                </div>

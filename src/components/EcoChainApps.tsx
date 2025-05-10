@@ -49,9 +49,9 @@ const EcoChainApps = () => {
    const chunks = chunkApps(apps);
 
    return (
-      <section className="bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] py-8 md:py-28 overflow-hidden">
-         <div className="mx-auto -mx-4 px-4">
-            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
+      <section className="bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] py-8 md:py-28">
+         <div className="mx-auto px-4">
+            <div className="max-w-7xl px-4 mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
                <h2 className="text-5xl lg:text-7xl uppercase text-white">EcoChain Apps</h2>
                <Link href="/apps">
                   <span className="group text-sm uppercase text-gray-300 flex items-center gap-1">
@@ -61,13 +61,13 @@ const EcoChainApps = () => {
                </Link>
             </div>
 
-            <div ref={sliderRef} className="keen-slider relative max-w-7xl mx-auto">
+            <div ref={sliderRef} className="keen-slider relative max-w-full mx-auto">
                {chunks.map((chunk, index) => {
                   if (chunk.type === 'grid') {
                      return (
                         <div
                            key={index}
-                           className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] grid grid-cols-2 gap-4"
+                           className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] grid grid-cols-2 gap-4 px-4 md:py-4"
                         >
                            {chunk.items.map((app, idx) => (
                               <AppCard app={app} key={idx} />
@@ -77,7 +77,7 @@ const EcoChainApps = () => {
                   } else {
                      const app = chunk.items[0];
                      return (
-                        <div key={index} className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] flex items-stretch">
+                        <div key={index} className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] flex items-stretch px-4 md:py-4">
                            <AppCard app={app} large />
                         </div>
                      );
@@ -90,12 +90,14 @@ const EcoChainApps = () => {
 };
 
 const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => (
-   <div className={`rounded-xl border-4 border-[#032a1c] overflow-hidden w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
+   <div className={`card-hover relative rounded-lg border-2 hover:border-4 transition-all duration-300 border-[#032a1c] w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
+      <span className="ping-border"></span>
+      <span className="ping-border-2"></span>
       <div className="relative w-full h-full">
          <img
             src={app.image}
             alt={app.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-lg"
          />
          <span className="absolute top-3 left-3 bg-white/10 text-white text-xs uppercase px-3 py-1 rounded-lg backdrop-blur-sm">
             {app.tag}

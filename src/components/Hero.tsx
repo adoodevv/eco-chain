@@ -131,9 +131,22 @@ export default function Hero() {
                <div className="absolute bottom-10 left-4 md:left-10 lg:left-40 text-white">
                   <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-9xl">{slides[currentSlide].title}</h2>
                   <p className="text-xs sm:text-sm uppercase pt-2 pb-4 md:pb-8">{slides[currentSlide].description}</p>
-                  <button className="px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm border-3 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
-                     {slides[currentSlide].buttonText}
-                  </button>
+                  <div className="relative w-fit button-hover flex justify-center group">
+                     <span className="ping-button"></span>
+                     <span className="ping-button-2"></span>
+                     <button className="px-3 py-2 md:px-4 md:py-3 bg-white text-xs md:text-sm border-2 hover:border-4 transition-all duration-300 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
+                        <div className="relative overflow-hidden">
+                           <div className="transition-transform duration-500 group-hover:-translate-y-full">
+                              {/*{slides[currentSlide].buttonText}*/}
+                              explore
+                           </div>
+                           <div className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                              {/*{slides[currentSlide].buttonText}*/}
+                              explore
+                           </div>
+                        </div>
+                     </button>
+                  </div>
                </div>
                <div className="absolute flex gap-2 md:gap-4 bottom-4 md:bottom-10 right-4 md:right-10 lg:right-40">
                   {slides.map((slide, index) => (

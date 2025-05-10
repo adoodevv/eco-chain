@@ -74,7 +74,7 @@ const Slider = () => {
    );
 
    return (
-      <div className="relative uppercase py-32">
+      <div className="relative uppercase py-32 flex flex-col items-center">
          <div>
             <div className="bg-black py-2 overflow-hidden">
                <div
@@ -99,9 +99,18 @@ const Slider = () => {
                </div>
             </div>
          </div>
-         <div className="flex justify-center py-12 animate-bounce">
-            <Link href="/" className="px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm border-3 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
-               Browse all apps
+         <div className="relative w-fit button-hover flex justify-center my-24 animate-bounce group">
+            <span className="ping-button"></span>
+            <span className="ping-button-2"></span>
+            <Link href="/" className="px-3 py-2 md:px-4 md:py-3 bg-white text-xs md:text-sm border-2 hover:border-4 transition-all duration-300 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
+               <div className="relative overflow-hidden">
+                  <div className="transition-transform duration-500 group-hover:-translate-y-full">
+                     Browse all apps
+                  </div>
+                  <div className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                     Browse all apps
+                  </div>
+            </div>
             </Link>
          </div>
       </div>
