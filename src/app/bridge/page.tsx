@@ -15,7 +15,7 @@ export default function BridgePage() {
    return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] text-white">
          {/* Bridge Card */}
-         <div className="container mx-auto flex justify-center px-4">
+         <div className="container mx-auto flex justify-center px-4 md:pt-30">
             <div className="relative w-full max-w-md bg-black border border-green-500/50 rounded-lg shadow-lg overflow-hidden">
                {/* Card Title */}
                <div className="pt-6 pb-4 text-center">
