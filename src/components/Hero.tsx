@@ -113,7 +113,7 @@ export default function Hero() {
 
    return (
       <div className={`h-screen w-full overflow-hidden ${currentBg} transition-colors duration-500`}>
-         <div className="absolute inset-0 bg-black opacity-80 pointer-events-none z-0"></div>
+         <div className="absolute h-screen inset-0 bg-black opacity-80 pointer-events-none z-0"></div>
          <div className="wrapper">
             <div className="scene w-full md:w-[1275px] h-[1020px] z-10">
                <div className="carousel keen-slider mt-16" ref={sliderRef}>

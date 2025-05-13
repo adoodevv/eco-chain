@@ -1,8 +1,8 @@
 import About from "@/components/About";
 import DifferenceSection from "@/components/DifferenceSection";
-import EcoChainApps from "@/components/EcoChainApps";
 import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
+import MyceliumApps from "@/components/MyceliumApps";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <About />
       <Slider />
       <DifferenceSection />
-      <EcoChainApps />
+      <MyceliumApps />
     </div>
   );
 }

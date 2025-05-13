@@ -39,7 +39,7 @@ const chunkApps = (apps: App[]) => {
    return chunks;
 };
 
-const EcoChainApps = () => {
+const MyceliumApps = () => {
    const [sliderRef] = useKeenSlider<HTMLDivElement>({
       mode: 'free',
       slides: { perView: 'auto', spacing: 8 },
@@ -49,10 +49,10 @@ const EcoChainApps = () => {
    const chunks = chunkApps(apps);
 
    return (
-      <section className="bg-gradient-to-br from-[#032a1c] via-black to-[#032a1c] py-8 md:py-28">
+      <section className="bg-gradient-to-br from-black via-black to-[#032a1c] py-8 md:py-28">
          <div className="mx-auto px-4">
             <div className="max-w-7xl px-4 mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-10">
-               <h2 className="text-5xl lg:text-7xl uppercase text-white">EcoChain Apps</h2>
+               <h2 className="text-5xl lg:text-7xl uppercase text-white">Mycelium Apps</h2>
                <Link href="/apps">
                   <span className="group text-sm uppercase text-gray-300 flex items-center gap-1">
                      Browse all apps
@@ -110,4 +110,4 @@ const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => (
    </div>
 );
 
-export default EcoChainApps;
+export default MyceliumApps;

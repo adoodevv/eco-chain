@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const Footer = () => {
-  const buildOnEcoChain = [
+  const buildOnMycelium = [
     {
       title: 'Docs',
       href: '/docs',
@@ -15,8 +15,8 @@ const Footer = () => {
       href: '/testnet-hub',
     },
     {
-      title: 'EcoChain Portal',
-      href: '/ecochain-portal',
+      title: 'Mycelium Portal',
+      href: '/mycelium-portal',
     },
   ]
 
@@ -63,9 +63,9 @@ const Footer = () => {
       <div className="mx-auto w-full flex flex-col items-center">
         <div className="flex flex-col md:flex-row justify-end items-start gap-12 lg:gap-42 w-full lg:px-32 pb-4">
           <div className="text-white uppercase">
-            <h1 className="text-2xl md:text-3xl">Build on ecochain</h1>
+            <h1 className="text-2xl md:text-3xl">Build on Mycelium</h1>
             <ul className="flex flex-col gap-2 mt-3 text-sm">
-              {buildOnEcoChain.map((item) => (
+              {buildOnMycelium.map((item) => (
                 <li key={item.title} className="group">
                   <Link href={item.href}>
                     <div className="relative overflow-hidden">
@@ -82,7 +82,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="text-white uppercase">
-            <h1 className="text-2xl md:text-3xl">ecochain</h1>
+            <h1 className="text-2xl md:text-3xl">Mycelium</h1>
             <ul className="flex flex-col gap-2 mt-3 text-sm">
               {ecochain.map((item) => (
                 <li key={item.title} className="group">
@@ -124,13 +124,13 @@ const Footer = () => {
 
       <div className="w-full flex justify-center items-end pb-4 overflow-hidden">
         <div className="text-white uppercase manuka-bold text-center w-full text-8xl md:text-[200px] lg:text-[400px] xl:text-[500px] leading-none tracking-[0.06em] lg:tracking-[0.08em] pointer-events-none whitespace-nowrap">
-          ecochain
+          Mycelium
         </div>
       </div>
 
       <div className="mx-auto w-full pb-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 uppercase text-sm text-white opacity-80">
-          <div>© 2025 EcoChain. All rights reserved.</div>
+          <div>© 2025 Mycelium. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <Link href="/privacy-policy" className="group">
               <div className="relative overflow-hidden">

@@ -78,7 +78,7 @@ const Slider = () => {
          <div>
             <div className="bg-black py-2 overflow-hidden">
                <div
-                  className="flex items-center"
+                  className="flex items-center gap-8"
                   style={{
                      transform: `translateX(${position}px)`,
                   }}
@@ -89,7 +89,7 @@ const Slider = () => {
             </div>
             <div className="bg-black py-2 overflow-hidden">
                <div
-                  className="flex items-center"
+                  className="flex items-center gap-8"
                   style={{
                      transform: `translateX(${-position}px)`,
                   }}

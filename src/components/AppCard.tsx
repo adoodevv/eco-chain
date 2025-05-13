@@ -12,7 +12,7 @@ interface AppCardProps {
 
 const AppCard: React.FC<AppCardProps> = ({ app, large = false }) => (
    <div className="flex flex-col">
-      <div className={`relative rounded-lg border-2 hover:border-4 transition-all duration-300 border-[#032a1c] w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
+      <div className={`relative rounded-lg w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
          <div className="relative w-full h-full overflow-hidden">
             <img
                src={app.image}

@@ -27,7 +27,7 @@ const Navbar = () => {
             { title: 'Mainnet Hub', href: '/blog/slug3' },
             { title: 'Testnet Hub', href: '/blog/slug4' },
             { title: 'Block Explorer', href: '/blog/slug5' },
-            { title: 'EcoChain Portal', href: '/blog/slug6' },
+            { title: 'Mycelium Portal', href: '/blog/slug6' },
          ]
       },
    ];
@@ -99,7 +99,7 @@ const Navbar = () => {
 
             {/* Desktop menu */}
             <div className="hidden md:block z-10">
-               <Link href='/' className="manuka-bold text-5xl text-[#00EE7D] poppins-logo uppercase">EcoChain</Link>
+               <Link href='/' className="manuka-bold text-5xl text-[#00EE7D] poppins-logo uppercase">Mycelium</Link>
             </div>
 
             <nav className="hidden md:flex items-center justify-center space-x-8 z-10">
@@ -144,7 +144,7 @@ const Navbar = () => {
             </button>
 
             {/* Logo - Mobile */}
-            <Link href='/' className="md:hidden z-10 text-4xl text-[#00EE7D] manuka-bold uppercase">EcoChain</Link>
+            <Link href='/' className="md:hidden z-10 text-4xl text-[#00EE7D] manuka-bold uppercase">Mycelium</Link>
 
             {/* Not visible logo to make logo centered on mobile */}
             <button
@@ -179,7 +179,7 @@ const Navbar = () => {
                         className="text-4xl text-[#00EE7D] manuka-bold uppercase"
                         onClick={() => setIsMobileMenuOpen(false)}
                      >
-                        EcoChain
+                        Mycelium
                      </Link>
                      <div className="w-[68px]"></div>
                   </div>
@@ -273,7 +273,7 @@ const Navbar = () => {
                      onMouseEnter={handleDropdownHover}
                      onMouseLeave={handleDropdownLeave}
                   >
-                     <h1 className="text-9xl lg:text-[270px] leading-tight uppercase text-white">{activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.title}</h1>
+                     <h1 className="text-9xl md:text-[200px] lg:text-[270px] leading-tight uppercase text-white">{activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.title}</h1>
                      <div className="px-8 w-2/5">
                         <ul className="grid grid-flow-col grid-rows-4 gap-2">
                            {activeDesktopItem && menuItems.find(item => item.id === activeDesktopItem)?.submenu.map((subItem, index) => (
