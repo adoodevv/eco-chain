@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
 import { BurgerIcon, CloseIcon, PlusIcon } from "@/constants/Icons"
+import Image from "next/image"
 
 const Navbar = () => {
    const pathname = usePathname()
@@ -98,9 +99,16 @@ const Navbar = () => {
             )}
 
             {/* Desktop menu */}
-            <div className="hidden md:block z-10">
-               <Link href='/' className="manuka-bold text-5xl text-[#00EE7D] poppins-logo uppercase">Mycelium</Link>
-            </div>
+            <Link href='/' className="hidden md:flex items-center space-x-2 z-10">
+               <Image
+                  src='/logo.png'
+                  alt="logo"
+                  width={100}
+                  height={100}
+                  className="h-16 w-16"
+               />
+               <h1 className="manuka-bold text-4xl text-[#00EE7D] poppins-logo uppercase">Mycelium</h1>
+            </Link>
 
             <nav className="hidden md:flex items-center justify-center space-x-8 z-10">
                <ul className="flex items-center space-x-22 uppercase manuka-bold text-3xl">
@@ -144,7 +152,16 @@ const Navbar = () => {
             </button>
 
             {/* Logo - Mobile */}
-            <Link href='/' className="md:hidden z-10 text-4xl text-[#00EE7D] manuka-bold uppercase">Mycelium</Link>
+            <Link href='/' className="md:hidden flex items-center space-x-2 z-10">
+               <Image
+                  src='/logo.png'
+                  alt="logo"
+                  width={100}
+                  height={100}
+                  className="h-16 w-16"
+               />
+               <h1 className="manuka-bold text-4xl text-[#00EE7D] poppins-logo uppercase">Mycelium</h1>
+            </Link>
 
             {/* Not visible logo to make logo centered on mobile */}
             <button
@@ -176,10 +193,16 @@ const Navbar = () => {
                      </button>
                      <Link
                         href='/'
-                        className="text-4xl text-[#00EE7D] manuka-bold uppercase"
+                        className="md:hidden flex items-center space-x-2 z-10"
                         onClick={() => setIsMobileMenuOpen(false)}
                      >
-                        Mycelium
+                        <Image
+                           src='/logo.png'
+                           alt="logo"
+                           width={100}
+                           height={100}
+                           className="h-16 w-16"
+                        />
                      </Link>
                      <div className="w-[68px]"></div>
                   </div>

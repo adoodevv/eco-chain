@@ -6,7 +6,7 @@ const About = () => {
       <div className="w-full md:w-1/2 flex items-center justify-center mb-8 md:mb-0">
         <Image
           alt='blocks'
-          src='/images/blocks.png'
+          src='/logo.png'
           width={500}
           height={500}
           className="h-auto w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[700px] object-cover"
@@ -15,7 +15,7 @@ const About = () => {
       <div className="w-full md:w-1/2">
         <div className="max-w-3xl p-4 sm:p-6 md:p-8 lg:p-12">
           <h1 className="uppercase text-5xl lg:text-9xl mb-4">
-            About EcoChain
+            About Mycelium
           </h1>
           <p className="uppercase text-sm leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
