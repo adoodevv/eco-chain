@@ -99,18 +99,18 @@ const Slider = () => {
                </div>
             </div>
          </div>
-         <div className="relative w-fit button-hover flex justify-center my-24 animate-bounce group">
+         <div className="relative w-fit button-hover flex justify-center my-24 group">
             <span className="ping-button"></span>
             <span className="ping-button-2"></span>
-            <Link href="/" className="px-3 py-2 md:px-4 md:py-3 bg-white text-xs md:text-sm border-2 hover:border-4 transition-all duration-300 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
+            <Link href="/apps" className="px-3 py-2 md:px-4 md:py-3 bg-white text-xs md:text-sm border-2 hover:border-4 transition-all duration-300 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
                <div className="relative overflow-hidden">
-                  <div className="transition-transform duration-500 group-hover:-translate-y-full">
+                  <div className="transition-transform duration-[1.125s] group-hover:-translate-y-full ease-[cubic-bezier(0.19,1,0.22,1)]">
                      Browse all apps
                   </div>
-                  <div className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                  <div className="absolute top-0 left-0 transition-transform duration-[1.125s] translate-y-full group-hover:translate-y-0 ease-[cubic-bezier(0.19,1,0.22,1)]">
                      Browse all apps
                   </div>
-            </div>
+               </div>
             </Link>
          </div>
       </div>
