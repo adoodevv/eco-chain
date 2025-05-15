@@ -3,27 +3,19 @@
 import React, { useState, useMemo } from 'react';
 import AppsSidebar from '@/components/AppsSidebar';
 import AppsGrid from '@/components/AppsGrid';
-
-const appsData = [
-   { title: 'AIOW', description: 'Your all-in-one, no-code NFT launchpad on Apechain', tag: 'Collectibles', image: '/images/app1.jpg' },
-   { title: 'Alchemy', description: 'Web3 infrastructure', tag: 'Infrastructure', image: '/images/app2.jpg' },
-   { title: 'Ape Accelerator', description: 'Accelerate your project', tag: 'Finance', image: '/images/app3.jpg' },
-   { title: 'Ape Builder / Sequence', description: 'Web3 game dev platform', tag: 'Infrastructure', image: '/images/app4.jpg' },
-   { title: 'Ape Den', description: 'Event: Feb 27, 9:00 AM - Feb 28, 2:00 PM', tag: 'Events', image: '/images/app5.jpg' },
-   { title: 'Ape Express', description: 'The ultimate memecoin toolkit', tag: 'Finance', image: '/images/app6.jpg' },
-];
+import { apps } from '@/constants/apps';
 
 const categories = [
    'Events',
    'Finance',
    'Infrastructure',
    'Collectibles',
-   'Games',
    'Intellectual Property',
    'News',
 ];
 
 const AppsPage = () => {
+   const appsData = apps;
    const [search, setSearch] = useState('');
    const [selectedCategory, setSelectedCategory] = useState('All');
    const [sort, setSort] = useState<'asc' | 'desc'>('asc');

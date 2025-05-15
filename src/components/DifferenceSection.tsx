@@ -32,10 +32,8 @@ const DifferenceSection = () => {
                {features.map((feature, index) => (
                   <div
                      key={index}
-                     className="card-hover relative uppercase border-2 hover:border-4 border-[#032a1c] rounded-lg px-4 sm:px-6 py-8 sm:py-12 backdrop-blur-sm transition-all duration-300"
+                     className="relative uppercase border-2 border-[#032a1c] rounded-lg px-4 sm:px-6 py-8 sm:py-12 backdrop-blur-sm hover:-translate-y-2 transition-all duration-300"
                   >
-                     <span className="ping-border"></span>
-                     <span className="ping-border-2"></span>
                      <div className="relative z-10">
                         <div className="mb-4">{feature.img}</div>
                         <h3 className="text-4xl md:text-5xl manuka-bold mb-2">{feature.title}</h3>

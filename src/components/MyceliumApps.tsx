@@ -4,21 +4,8 @@ import Link from 'next/link';
 import { FaChevronRight } from "react-icons/fa";
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
-
-const apps = [
-   { title: 'Otherside', description: 'Web3 worlds', tag: 'Games', image: '/images/app1.jpg' },
-   { title: 'Made by Apes', description: 'Builders club', tag: 'IP', image: '/images/app2.jpg' },
-   { title: 'Camelot', description: 'DEX', tag: 'Finance', image: '/images/app1.jpg' },
-   { title: 'Magic Eden', description: 'NFTs', tag: 'Collectibles', image: '/images/app2.jpg' },
-   { title: 'APE Portal', description: 'Get on Apechain', tag: 'Infrastructure', image: '/images/app1.jpg' },
-   { title: 'Blever', description: 'Launchpad', tag: 'Collectibles', image: '/images/app2.jpg' },
-   { title: 'Apescan', description: 'Block explorer', tag: 'Infrastructure', image: '/images/app1.jpg' },
-   { title: 'Otherside', description: 'Web3 worlds', tag: 'Games', image: '/images/app1.jpg' },
-   { title: 'Made by Apes', description: 'Builders club', tag: 'IP', image: '/images/app2.jpg' },
-   { title: 'Camelot', description: 'DEX', tag: 'Finance', image: '/images/app1.jpg' },
-   { title: 'Magic Eden', description: 'NFTs', tag: 'Collectibles', image: '/images/app2.jpg' },
-   { title: 'APE Portal', description: 'Get on Apechain', tag: 'Infrastructure', image: '/images/app1.jpg' },
-];
+import { apps as myceliumApps } from '@/constants/apps';
+import { useRouter } from 'next/navigation'
 
 interface App {
    title: string;
@@ -40,6 +27,9 @@ const chunkApps = (apps: App[]) => {
 };
 
 const MyceliumApps = () => {
+   const router = useRouter();
+   const apps = myceliumApps;
+
    const [sliderRef] = useKeenSlider<HTMLDivElement>({
       mode: 'free',
       slides: { perView: 'auto', spacing: 8 },
@@ -89,25 +79,36 @@ const MyceliumApps = () => {
    );
 };
 
-const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => (
-   <div className={`card-hover relative rounded-lg border-2 hover:border-4 transition-all duration-300 border-[#032a1c] w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}>
-      <span className="ping-border"></span>
-      <span className="ping-border-2"></span>
-      <div className="relative w-full h-full">
-         <img
-            src={app.image}
-            alt={app.title}
-            className="w-full h-full object-cover rounded-lg"
-         />
-         <span className="absolute top-3 left-3 bg-white/10 text-white text-xs uppercase px-3 py-1 rounded-lg backdrop-blur-sm">
-            {app.tag}
-         </span>
-         <div className="absolute bottom-3 left-3 text-white">
-            <h1 className="text-2xl md:text-4xl uppercase">{app.title}</h1>
-            <p className="text-sm uppercase">{app.description}</p>
+const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => {
+   const router = useRouter();
+   const handleClick = () => {
+      const slug = app.route.replace('/apps/', '').replace('/app/', '');
+      router.push(`/apps/${slug}`);
+   };
+   return (
+      <div
+         className={`card-hover relative rounded-lg border-2 hover:border-4 transition-all duration-300 border-[#032a1c] w-full ${large ? 'h-[41rem]' : 'h-[20rem]'}`}
+         onClick={handleClick}
+         style={{ cursor: 'pointer' }}
+      >
+         <span className="ping-border"></span>
+         <span className="ping-border-2"></span>
+         <div className="relative w-full h-full">
+            <img
+               src={app.image}
+               alt={app.title}
+               className="w-full h-full object-cover rounded-lg"
+            />
+            <span className="absolute top-3 left-3 bg-white/10 text-white text-xs uppercase px-3 py-1 rounded-lg backdrop-blur-sm">
+               {app.tag}
+            </span>
+            <div className="absolute bottom-3 left-3 text-white">
+               <h1 className="text-2xl md:text-4xl uppercase">{app.title}</h1>
+               <p className="text-sm uppercase line-clamp-1">{app.description}</p>
+            </div>
          </div>
       </div>
-   </div>
-);
+   );
+};
 
 export default MyceliumApps;
