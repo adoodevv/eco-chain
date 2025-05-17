@@ -93,11 +93,11 @@ const AppCard = ({ app, large = false }: { app: any; large?: boolean }) => {
       >
          <span className="ping-border"></span>
          <span className="ping-border-2"></span>
-         <div className="relative w-full h-full">
+         <div className="relative w-full h-full overflow-hidden">
             <img
                src={app.image}
                alt={app.title}
-               className="w-full h-full object-cover rounded-lg"
+               className="w-full h-full object-cover rounded-lg hover:scale-110 transition-all duration-500"
             />
             <span className="absolute top-3 left-3 bg-white/10 text-white text-xs uppercase px-3 py-1 rounded-lg backdrop-blur-sm">
                {app.tag}

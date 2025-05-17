@@ -110,41 +110,18 @@ function Card({ url, title, description, tag, ...props }: CardProps) {
       easing.damp(material, 'zoom', hovered ? 1 : 1.5, 0.2, delta)
    })
    return (
-      <Image ref={ref} url={url} transparent side={THREE.DoubleSide} onPointerOver={pointerOver} onPointerOut={pointerOut} {...props}>
-         <bentPlaneGeometry args={[0.2, 1.5, 1, 20, 20]} />
-      </Image>
-   )
-}
-
-interface BannerProps {
-   position?: [number, number, number];
-   rotation?: [number, number, number];
-}
-
-interface CustomMeshMaterial extends THREE.Material {
-   time?: { value: number };
-   map?: THREE.Texture;
-}
-
-function Banner(props: BannerProps) {
-   const ref = useRef<THREE.Mesh>(null)
-   const texture = useTexture('/images/app1.jpg')
-   texture.wrapS = texture.wrapT = THREE.RepeatWrapping
-   useFrame((state: RootState, delta: number) => {
-      if (!ref.current) return
-      const material = ref.current.material as CustomMeshMaterial
-      if ('scroll' in state && material.time) {
-         material.time.value += Math.abs((state as any).scroll.delta) * 4
-      }
-      if (material.map) {
-         material.map.offset.x += delta / 2
-      }
-   })
-   return (
-      <mesh ref={ref} {...props}>
-         <cylinderGeometry args={[1.6, 1.6, 0.14, 128, 16, true]} />
-         <meshSineMaterial map={texture} map-anisotropy={16} map-repeat={[30, 1]} side={THREE.DoubleSide} toneMapped={false} />
-      </mesh>
+      <group scale={[-1, 1, 1]} {...props}>
+         <Image
+            ref={ref}
+            url={url}
+            transparent
+            side={THREE.DoubleSide}
+            onPointerOver={pointerOver}
+            onPointerOut={pointerOut}
+         >
+            <bentPlaneGeometry args={[0.2, 1.5, 1, 20, 20]} />
+         </Image>
+      </group>
    )
 }
 
