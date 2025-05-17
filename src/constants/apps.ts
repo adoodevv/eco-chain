@@ -25,7 +25,7 @@ export const apps = [
    },
    {
       title: 'QuickNode',
-      description: 'Explore rare digital assets powered by EcoChain',
+      description: 'We make it simple to power your blockchain applications and scale up as you grow. From elastic APIs, to powerful tools & analytics, all at your command through a simple control panel',
       image: '/images/quicknode.jpg',
       tag: 'Infrastructure',
       route: '/apps/quicknode',
@@ -41,7 +41,7 @@ export const apps = [
    },
    {
       title: 'ThirdWeb',
-      description: 'Mint, sell, and grow your Web3 presence with Thirdweb',
+      description: 'Build onchain apps, games, and agents with reliable wallet infrastructure, practical dev tools & in-depth onchain data: for all builders, on every EVM',
       image: '/images/thirdweb.jpg',
       tag: 'Infrastucture',
       route: '/apps/thirdweb',
@@ -57,7 +57,7 @@ export const apps = [
    },
    {
       title: 'Mycelium Portal',
-      description: 'Mint, sell, and grow your Web3 presence with powerful tools',
+      description: 'Fast, modular, extensible regenerative finance layer-2 blockchain',
       image: '/images/myceliumportal.png',
       tag: 'Infrastructure',
       route: '/bridge',
