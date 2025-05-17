@@ -198,15 +198,15 @@ export default function Hero3D() {
             <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
                <button
                   onClick={handlePrevSlide}
-                  className="w-12 h-12 rounded-full border-2 border-[#00EE7D] hover:scale-105 transition-all duration-300 flex items-center justify-center"
+                  className="md:w-16 md:h-16 w-12 h-12 rounded-full border-2 border-[#00EE7D] hover:scale-105 transition-all duration-300 flex items-center justify-center"
                >
-                  <FaPlay className="h-3 w-3 text-white rotate-180" />
+                  <FaPlay className="h-2 w-2 text-white rotate-180" />
                </button>
                <button
                   onClick={handleNextSlide}
-                  className="w-12 h-12 rounded-full border-2 border-[#00EE7D] hover:scale-105 transition-all duration-300 flex items-center justify-center"
+                  className="md:w-16 md:h-16 w-12 h-12 rounded-full border-2 border-[#00EE7D] hover:scale-105 transition-all duration-300 flex items-center justify-center"
                >
-                  <FaPlay className="h-3 w-3 text-white" />
+                  <FaPlay className="h-2 w-2 text-white" />
                </button>
             </div>
 
@@ -247,7 +247,7 @@ export default function Hero3D() {
                               key={index}
                               src={slide.image}
                               alt={`Thumbnail ${slide.title}`}
-                              className={`object-cover opacity-60 bg-cover bg-center border-3 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 cursor-pointer ${index === currentSlide ? 'border-[#00EE7D] opacity-100' : 'border-transparent'}`}
+                              className={`object-cover rounded-lg opacity-60 bg-cover bg-center border-3 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 cursor-pointer ${index === currentSlide ? 'border-[#00EE7D] opacity-100' : 'border-transparent'}`}
                               onClick={() => handleThumbnailClick(index)}
                            />
                         ))}

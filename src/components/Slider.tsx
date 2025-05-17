@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GiSevenPointedStar } from 'react-icons/gi';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,22 +8,22 @@ const Slider = () => {
    const slide = [
       {
          title: "Regenerative Finance",
-         image: "/images/regenerative-finance.jpg",
+         image: "/images/finance.jpg",
          link: "/regenerative-finance"
       },
       {
          title: "Green Technology",
-         image: "/images/green-technology.png",
+         image: "/images/technology.jpg",
          link: "/green-technology"
       },
       {
          title: "Sustainability",
-         image: "/images/regenerative-finance.jpg",
+         image: "/images/sustainability.jpg",
          link: "/sustainability"
       },
       {
          title: "Climate Projects",
-         image: "/images/green-technology.png",
+         image: "/images/climate-projects.jpg",
          link: "/climate-projects"
       }
    ];
