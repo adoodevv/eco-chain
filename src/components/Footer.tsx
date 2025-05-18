@@ -27,7 +27,7 @@ const Footer = () => {
     },
     {
       title: 'Relay Bridge',
-      href: '/relay-bridge',
+      href: '/bridge',
     },
     {
       title: 'Ecosystem Fund',
@@ -35,11 +35,11 @@ const Footer = () => {
     },
     {
       title: 'Telegram',
-      href: '/telegram',
+      href: 'https://t.me/myceliumlabsofficial',
     },
     {
       title: 'Twitter / X',
-      href: '/twitter-x',
+      href: 'https://x.com/MyceliumL2',
     },
   ]
 

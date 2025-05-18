@@ -3,7 +3,7 @@ import Link from "next/link";
 import FadeUpAnimation from "@/components/FadeUp";
 
 export const metadata = {
-   title: 'Privacy Policy | Mycelium',
+   title: 'Privacy Policy | Mycelium Labs',
    description: 'Join us in our mission to Enable Borderless Access with Technology.',
 }
 
@@ -16,10 +16,10 @@ const Privacy = () => {
                   <h1 className="text-4xl sm:text-5xl md:text-6xl text-center uppercase">
                      Privacy Policy
                   </h1>
-                  <h2 className="text-4xl text-center mt-2 uppercase">Mycelium</h2>
+                  <h2 className="text-4xl text-center mt-2 uppercase">Mycelium Labs</h2>
                   <h3 className="text-lg sm:text-xl text-center mt-2">Last Updated: May 12, 2025</h3>
                   <p className="mt-6 text-lg sm:text-xl opacity-80 max-w-4xl mx-auto text-center">
-                     Welcome to the Mycelium Website. At Mycelium, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website.
+                     Welcome to the Mycelium Labs Website. At Mycelium Labs, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website.
                   </p>
                </div>
             </div>
@@ -31,7 +31,7 @@ const Privacy = () => {
                   <section>
                      <h2 className="text-2xl sm:text-4xl uppercase mb-4">Who We Are</h2>
                      <p className="opacity-80">
-                        Mycelium is a trusted convener that brings together businesses, developers, and the broader ecosystem to drive innovation and foster collaboration for a decentralized future. Our website serves as a platform to connect stakeholders and promote borderless access through technology.
+                        Mycelium Labs is a trusted convener that brings together businesses, developers, and the broader ecosystem to drive innovation and foster collaboration for a decentralized future. Our website serves as a platform to connect stakeholders and promote borderless access through technology.
                      </p>
                   </section>
                </FadeUpAnimation>

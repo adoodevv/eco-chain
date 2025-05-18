@@ -16,10 +16,10 @@ const Terms = () => {
                   <h1 className="text-4xl sm:text-5xl md:text-6xl text-center uppercase">
                      Terms of Service
                   </h1>
-                  <h2 className="text-3xl sm:text-4xl text-center mt-2 uppercase">Mycelium</h2>
+                  <h2 className="text-3xl sm:text-4xl text-center mt-2 uppercase">Mycelium Labs</h2>
                   <h3 className="text-lg sm:text-xl text-center mt-2">Last Updated: May 12, 2025</h3>
                   <p className="mt-6 text-lg sm:text-xl opacity-80 max-w-4xl mx-auto text-center">
-                     Welcome to the Mycelium Website. These Terms of Service ("Terms") govern your access to and use of the OGL website (the "Website"). By accessing the Website, you agree to be bound by these Terms. If you do not agree, please do not use the Website.
+                     Welcome to the Mycelium Labs Website. These Terms of Service ("Terms") govern your access to and use of the Mycelium Labs website (the "Website"). By accessing the Website, you agree to be bound by these Terms. If you do not agree, please do not use the Website.
                   </p>
                </div>
             </div>
@@ -29,7 +29,7 @@ const Terms = () => {
             <div className="max-w-4xl mx-auto space-y-12">
                <FadeUpAnimation>
                   <section>
-                     <h2 className="text-2xl sm:text-4xl uppercase mb-4">About Offgrid Labs</h2>
+                     <h2 className="text-2xl sm:text-4xl uppercase mb-4">About Mycelium Labs</h2>
                      <p className="opacity-80">
                         Mycelium is a decentralized technology convener that facilitates collaboration between businesses, developers, and ecosystem participants to drive innovation in borderless technologies. Our website serves as an informational platform and community hub for these purposes.
                      </p>
@@ -59,7 +59,7 @@ const Terms = () => {
                   <section>
                      <h2 className="text-2xl sm:text-4xl uppercase mb-4">Intellectual Property</h2>
                      <p className="opacity-80">
-                        All content on this website, including text, graphics, logos, and software, is the property of Offgrid Labs or its licensors and is protected by intellectual property laws. You may not:
+                        All content on this website, including text, graphics, logos, and software, is the property of Mycelium Labs or its licensors and is protected by intellectual property laws. You may not:
                      </p>
                      <ul className="list-disc pl-6 space-y-2 opacity-80 mt-2">
                         <li>Reproduce, distribute, or modify any content without our express written permission</li>
@@ -85,7 +85,7 @@ const Terms = () => {
                   <section>
                      <h2 className="text-2xl sm:text-4xl uppercase mb-4">Disclaimers</h2>
                      <p className="opacity-80 mb-4">
-                        The OGL website is provided "as is" without warranties of any kind:
+                        The Mycelium Labs website is provided "as is" without warranties of any kind:
                      </p>
                      <ul className="list-disc pl-6 space-y-2 opacity-80">
                         <li>We do not guarantee the accuracy or completeness of any information on the website</li>
@@ -100,7 +100,7 @@ const Terms = () => {
                   <section>
                      <h2 className="text-2xl sm:text-4xl uppercase mb-4">Limitation of Liability</h2>
                      <p className="opacity-80">
-                        To the fullest extent permitted by law, Offgrid Labs and its affiliates shall not be liable for:
+                        To the fullest extent permitted by law, Mycelium Labs and its affiliates shall not be liable for:
                      </p>
                      <ul className="list-disc pl-6 space-y-2 opacity-80 mt-2">
                         <li>Any direct, indirect, incidental, or consequential damages</li>
@@ -115,7 +115,7 @@ const Terms = () => {
                   <section>
                      <h2 className="text-2xl sm:text-4xl uppercase mb-4">Indemnification</h2>
                      <p className="opacity-80">
-                        You agree to defend, indemnify, and hold harmless Offgrid Labs, its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising out of or in any way connected with:
+                        You agree to defend, indemnify, and hold harmless Mycelium Labs, its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising out of or in any way connected with:
                      </p>
                      <ul className="list-disc pl-6 space-y-2 opacity-80 mt-2">
                         <li>Your access to or use of the website</li>

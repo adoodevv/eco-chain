@@ -13,14 +13,16 @@ const About = () => {
         />
       </div>
       <div className="w-full md:w-1/2">
-        <div className="max-w-3xl p-4 sm:p-6 md:p-8 lg:p-12">
+        <div className="max-w-3xl p-4 sm:p-6 md:p-8 lg:p-12 text-center md:text-left">
           <h1 className="uppercase text-5xl lg:text-9xl mb-4">
             About Mycelium
           </h1>
           <p className="uppercase text-sm leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Mycelium is a groundbreaking Layer 2 blockchain. We like to call it the Human Layer purpose-built
+            for Regenerative Finance (ReFi) and Artificial Intelligence (AI) projects focused on a Greener Earth.
+            We provide a suite of powerful tools that empower developers, climate projects, and DAOs to create applications
+            that contribute to ecological restoration, circular economies, and transparent impact tracking—all while
+            leveraging the scalability and affordability of rollups.
           </p>
         </div>
       </div>

@@ -23,12 +23,12 @@ const Navbar = () => {
          id: 'build',
          title: 'Build',
          submenu: [
-            { title: 'Ecosystem Fund', href: '/blog/slug1' },
+            { title: 'Ecosystem Fund', href: 'https://ecofundme.com' },
             { title: 'Docs', href: '/blog/slug2' },
-            { title: 'Mainnet Hub', href: '/blog/slug3' },
-            { title: 'Testnet Hub', href: '/blog/slug4' },
-            { title: 'Block Explorer', href: '/blog/slug5' },
-            { title: 'Mycelium Portal', href: '/blog/slug6' },
+            { title: 'Mainnet Hub', href: 'https://mycelium-docs.pages.dev/docs/tools/rpc' },
+            { title: 'Testnet Hub', href: 'https://explorer.myceliumlabs.xyz/' },
+            { title: 'Block Explorer', href: 'https://explorer.myceliumlabs.xyz/' },
+            { title: 'Mycelium Portal', href: '/apps' },
          ]
       },
    ];

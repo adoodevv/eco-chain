@@ -4,19 +4,19 @@ const features = [
    {
       title: 'Transparency',
       description:
-         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+         'Mycelium leverages cutting-edge technologies like our secure RWA tokenization FHE protected infra, MPC, ZK Rollups, and Avail for data availability, providing a scalable and secure foundation for your applications',
       img: <Image alt='icon' width={150} height={150} src='/images/magnifying-glass.png' className="h-10 w-10 text-green-400" />,
    },
    {
       title: 'Re-fi focused',
       description:
-         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+         'Securely tokenize real-world assets like carbon credits and land with our unique, built-in RWA framework. Vote and Govern Composable with our scalable DVote ZK Rollup Infra and automate with Mycelium Automations',
       img: <Image alt='icon' width={150} height={150} src='/images/circuit.png' className="h-10 w-10 text-green-400" />,
    },
    {
       title: 'Technology',
       description:
-         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+         'Mycelium is building for a future where AI agents play a key role in scaling ReFi. Our infrastructure supports the development of autonomous agents that can strategically allocate capital, manage carbon credits, and trigger regenerative incentives based on real-world data, unlocking a new era of efficiency and impact',
       img: <Image alt='icon' width={150} height={150} src='/images/atom.png' className="h-10 w-10 text-green-400" />,
    },
 ];

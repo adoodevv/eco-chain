@@ -51,28 +51,42 @@ const MyceliumApps = () => {
                </Link>
             </div>
 
-            <div ref={sliderRef} className="keen-slider relative max-w-full mx-auto">
-               {chunks.map((chunk, index) => {
-                  if (chunk.type === 'grid') {
-                     return (
-                        <div
-                           key={index}
-                           className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] grid grid-cols-2 gap-4 px-4 md:py-4"
-                        >
-                           {chunk.items.map((app, idx) => (
-                              <AppCard app={app} key={idx} />
-                           ))}
-                        </div>
-                     );
-                  } else {
-                     const app = chunk.items[0];
-                     return (
-                        <div key={index} className="keen-slider__slide min-w-[70vw] sm:min-w-[50vw] flex items-stretch px-4 md:py-4">
-                           <AppCard app={app} large />
-                        </div>
-                     );
-                  }
-               })}
+            {/* Mobile View - Single Row */}
+            <div className="md:hidden">
+               <div ref={sliderRef} className="keen-slider relative max-w-full mx-auto">
+                  {apps.map((app, index) => (
+                     <div key={index} className="keen-slider__slide min-w-[280px] px-4 pb-24">
+                        <AppCard app={app} />
+                     </div>
+                  ))}
+               </div>
+            </div>
+
+            {/* Desktop View - Grid Layout */}
+            <div className="hidden md:block">
+               <div ref={sliderRef} className="keen-slider relative max-w-full mx-auto">
+                  {chunks.map((chunk, index) => {
+                     if (chunk.type === 'grid') {
+                        return (
+                           <div
+                              key={index}
+                              className="keen-slider__slide min-w-[50vw] grid grid-cols-2 gap-4 px-4 md:py-4"
+                           >
+                              {chunk.items.map((app, idx) => (
+                                 <AppCard app={app} key={idx} />
+                              ))}
+                           </div>
+                        );
+                     } else {
+                        const app = chunk.items[0];
+                        return (
+                           <div key={index} className="keen-slider__slide min-w-[50vw] flex items-stretch px-4 md:py-4">
+                              <AppCard app={app} large />
+                           </div>
+                        );
+                     }
+                  })}
+               </div>
             </div>
          </div>
       </section>

@@ -2,9 +2,9 @@
 
 import '@/utils/three-utils'
 import * as THREE from 'three'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame, RootState, ThreeEvent } from '@react-three/fiber'
-import { Image, useTexture } from '@react-three/drei'
+import { Image } from '@react-three/drei'
 import { easing } from 'maath'
 import { apps } from '@/constants/apps'
 import { useRouter } from 'next/navigation'
@@ -30,6 +30,17 @@ declare global {
    }
 }
 
+function useIsMobile() {
+   const [isMobile, setIsMobile] = useState(false)
+   useEffect(() => {
+      const checkMobile = () => setIsMobile(window.innerWidth < 768)
+      checkMobile()
+      window.addEventListener('resize', checkMobile)
+      return () => window.removeEventListener('resize', checkMobile)
+   }, [])
+   return isMobile
+}
+
 interface RigProps {
    onRotationChange?: (index: number) => void;
    rotation?: [number, number, number];
@@ -49,12 +60,10 @@ function Rig({ onRotationChange, targetRotation, children, ...props }: RigProps)
             ref.current.rotation.y += diff * 0.1
          }
       } else {
-         ref.current.rotation.y -= delta * 0.05 // Default slow rotation
+         ref.current.rotation.y -= delta * 0.05
       }
 
-      if (state.events?.update) {
-         state.events.update()
-      }
+      if (state.events?.update) state.events.update()
       easing.damp3(state.camera.position, [-state.pointer.x * 2, state.pointer.y + 1.5, 10], 0.3, delta)
       state.camera.lookAt(0, 0, 0)
 
@@ -65,7 +74,7 @@ function Rig({ onRotationChange, targetRotation, children, ...props }: RigProps)
    return <group ref={ref} {...props}>{children}</group>
 }
 
-function Carousel({ radius = 2.0, count = 6 }) {
+function Carousel({ radius = 2.0, count = 6, cardSize = [0.2, 1.5] }: { radius: number, count?: number, cardSize: [number, number] }) {
    const slides = apps.slice(0, count)
    return slides.map((slide, i) => (
       <Card
@@ -76,6 +85,7 @@ function Carousel({ radius = 2.0, count = 6 }) {
          tag={slide.tag}
          position={[Math.sin((i / count) * Math.PI * 2) * radius, 0, Math.cos((i / count) * Math.PI * 2) * radius]}
          rotation={[0, Math.PI + (i / count) * Math.PI * 2, 0]}
+         cardSize={cardSize}
       />
    ))
 }
@@ -87,14 +97,10 @@ interface CardProps {
    tag: string;
    position: [number, number, number];
    rotation: [number, number, number];
+   cardSize: [number, number];
 }
 
-interface CustomMaterial extends THREE.Material {
-   radius?: number;
-   zoom?: number;
-}
-
-function Card({ url, title, description, tag, ...props }: CardProps) {
+function Card({ url, title, description, tag, cardSize, ...props }: CardProps) {
    const ref = useRef<THREE.Mesh>(null)
    const [hovered, hover] = useState(false)
    const pointerOver = (e: ThreeEvent<PointerEvent>) => {
@@ -105,7 +111,7 @@ function Card({ url, title, description, tag, ...props }: CardProps) {
    useFrame((state: RootState, delta: number) => {
       if (!ref.current) return
       easing.damp3(ref.current.scale, hovered ? 1.15 : 1, 0.1, delta)
-      const material = ref.current.material as CustomMaterial
+      const material = ref.current.material as any
       easing.damp(material, 'radius', 0, 0.2, delta)
       easing.damp(material, 'zoom', hovered ? 1 : 1.5, 0.2, delta)
    })
@@ -119,7 +125,7 @@ function Card({ url, title, description, tag, ...props }: CardProps) {
             onPointerOver={pointerOver}
             onPointerOut={pointerOut}
          >
-            <bentPlaneGeometry args={[0.2, 1.5, 1, 20, 20]} />
+            <bentPlaneGeometry args={[...cardSize, 1, 20, 20]} />
          </Image>
       </group>
    )
@@ -127,6 +133,7 @@ function Card({ url, title, description, tag, ...props }: CardProps) {
 
 export default function Hero3D() {
    const router = useRouter()
+   const isMobile = useIsMobile()
    const [currentSlide, setCurrentSlide] = useState(0)
    const [targetRotation, setTargetRotation] = useState<number | undefined>(undefined)
    const slides = apps.slice(0, 6)
@@ -167,7 +174,10 @@ export default function Hero3D() {
          <div className="relative h-full w-full">
             <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
                <Rig rotation={[0, 0, 0.15]} onRotationChange={handleRotationChange} targetRotation={targetRotation}>
-                  <Carousel />
+                  <Carousel
+                     radius={isMobile ? 0.8 : 2.0}
+                     cardSize={isMobile ? [0.08, 0.6] : [0.2, 1.5]}
+                  />
                </Rig>
             </Canvas>
 
@@ -187,6 +197,7 @@ export default function Hero3D() {
                </button>
             </div>
 
+            {/* Text and Thumbnails */}
             <div className="absolute bottom-8 left-0 w-full px-4 md:px-30 z-20">
                <div className="flex md:flex-row flex-col items-center md:justify-between md:items-center gap-4">
                   <div className="text-white uppercase">
@@ -200,12 +211,8 @@ export default function Hero3D() {
                         <span className="ping-button-2"></span>
                         <button onClick={handleLaunch} className="px-3 py-2 md:px-8 md:py-3 bg-white text-xs md:text-sm border-2 hover:border-4 transition-all duration-300 border-[#00EE7D] bg-white text-black rounded-xl uppercase">
                            <div className="relative overflow-hidden">
-                              <div className="transition-transform duration-500 group-hover:-translate-y-full">
-                                 Launch
-                              </div>
-                              <div className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
-                                 Launch
-                              </div>
+                              <div className="transition-transform duration-500 group-hover:-translate-y-full">Launch</div>
+                              <div className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">Launch</div>
                            </div>
                         </button>
                      </div>
@@ -235,4 +242,4 @@ export default function Hero3D() {
          </div>
       </div>
    )
-} 
+}
