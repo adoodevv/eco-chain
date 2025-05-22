@@ -24,7 +24,7 @@ const Navbar = () => {
          title: 'Build',
          submenu: [
             { title: 'Ecosystem Fund', href: 'https://ecofundme.com' },
-            { title: 'Docs', href: '/blog/slug2' },
+            { title: 'Docs', href: 'https://mycelium-docs.pages.dev/' },
             { title: 'Mainnet Hub', href: 'https://mycelium-docs.pages.dev/docs/tools/rpc' },
             { title: 'Testnet Hub', href: 'https://explorer.myceliumlabs.xyz/' },
             { title: 'Block Explorer', href: 'https://explorer.myceliumlabs.xyz/' },
