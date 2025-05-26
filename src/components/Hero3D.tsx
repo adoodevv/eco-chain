@@ -11,6 +11,12 @@ import { useRouter } from 'next/navigation'
 import Link from "next/link"
 import { FaPlay } from "react-icons/fa"
 
+const tagColors = {
+   'Finance': '#0a1a1f',    // Dark blue
+   'Infrastructure': '#1a0a1f',  // Dark purple
+   'Events': '#0a1f0f'     // Dark green
+} as const
+
 declare global {
    namespace JSX {
       interface IntrinsicElements {
@@ -169,7 +175,10 @@ export default function Hero3D() {
 
    return (
       <div className="h-screen w-full bg-white overflow-hidden transition-colors duration-500">
-         <div className="absolute h-screen inset-0 bg-black opacity-90 pointer-events-none z-0"></div>
+         <div
+            className="absolute h-screen inset-0 pointer-events-none z-0 transition-colors duration-500"
+            style={{ backgroundColor: tagColors[slides[currentSlide].tag as keyof typeof tagColors] }}
+         ></div>
 
          <div className="relative h-full w-full">
             <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>

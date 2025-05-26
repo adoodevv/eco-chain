@@ -19,7 +19,7 @@ export const apps = [
       title: 'Pinax',
       description: "Indexing. Chain onboarding. Dapp chains. Rollups. Since 2018, we've engineered end- to - end blockchain data processing and analytics tools, to help build the decentralized future",
       image: '/images/pinax.jpg',
-      tag: 'Infrastucture',
+      tag: 'Infrastructure',
       route: '/apps/pinax',
       link: 'https://pinax.network/en/solutions/enterprise-blockchain/'
    },
@@ -43,7 +43,7 @@ export const apps = [
       title: 'ThirdWeb',
       description: 'Build onchain apps, games, and agents with reliable wallet infrastructure, practical dev tools & in-depth onchain data: for all builders, on every EVM',
       image: '/images/thirdweb.jpg',
-      tag: 'Infrastucture',
+      tag: 'Infrastructure',
       route: '/apps/thirdweb',
       link: 'https://thirdweb.com/'
    },
