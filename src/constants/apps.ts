@@ -16,6 +16,54 @@ export const apps = [
       link: 'https://blockscout.com/'
    },
    {
+      title: 'Avail Project',
+      description: 'Avail is a horizontally scalable, trust-minimized infrastructure network enabling seamless cross-chain interaction, transaction validation, and native liquidity interoperability',
+      image: '/images/avail.png',
+      tag: 'Infrastructure',
+      route: '/apps/avail',
+      link: 'https://availproject.org'
+   },
+   {
+      title: 'Polymer Labs',
+      description: 'Polymer makes cross-rollup interoperability fast and easy for application builders',
+      image: '/images/polymer.png',
+      tag: 'Infrastructure',
+      route: '/apps/polymer',
+      link: 'https://polymerlabs.org'
+   },
+   {
+      title: 'Lucid Labs',
+      description: 'A no-code platform and SDK aggregating 10 + bridges under a single token standard, enabling DeFi projects and emerging chains to scale rapidly with automated liquidity management and seamless interoperability',
+      image: '/images/lucid.png',
+      tag: 'Infrastructure',
+      route: '/apps/lucid',
+      link: 'https://www.lucidlabs.fi/'
+   },
+   {
+      title: 'Othentic Labs',
+      description: 'Othentic Stack is a library of production-ready components to build distributed services, infrastructures, and applications',
+      image: '/images/othentic.png',
+      tag: 'Infrastructure',
+      route: '/apps/othentic',
+      link: 'https://www.othentic.xyz/'
+   },
+   {
+      title: 'Eigen Layer',
+      description: "Build. verifiable services. Leverage Ethereum's security for off - chain verification. ; Run.AVS infrastructure.Earn rewards validating verifiable service",
+      image: '/images/eigen.png',
+      tag: 'Infrastructure',
+      route: '/apps/eigenlayer',
+      link: 'https://www.eigenlayer.xyz/'
+   },
+   {
+      title: 'ZNS Connect',
+      description: 'Streamline your integration of verified Web3 domains with our all-in-one SDK, simplifying processes for communities everywhere',
+      image: '/images/zns.png',
+      tag: 'Infrastructure',
+      route: '/apps/znsconnect',
+      link: 'https://www.znsconnect.io/'
+   },
+   {
       title: 'Pinax',
       description: "Indexing. Chain onboarding. Dapp chains. Rollups. Since 2018, we've engineered end- to - end blockchain data processing and analytics tools, to help build the decentralized future",
       image: '/images/pinax.jpg',
