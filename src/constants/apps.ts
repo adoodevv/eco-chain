@@ -60,8 +60,8 @@ export const apps = [
       description: 'Fast, modular, extensible regenerative finance layer-2 blockchain',
       image: '/images/myceliumportal.png',
       tag: 'Infrastructure',
-      route: '/bridge',
-      link: 'https://mycelium.com/bridge/'
+      route: '/app/bridge',
+      link: 'https://www.myceliumlabs.xyz/bridge'
    },
    {
       title: 'Mycelium Auris Scan',
@@ -72,11 +72,11 @@ export const apps = [
       link: 'https://explorer.myceliumlabs.xyz/'
    },
    {
-      title: 'Propozar',
+      title: 'dVote',
       description: "ZK Validity Rollup infra for Composable DAO's to be created via census building and voting anonymously and in a scalable manner",
       image: '/images/gttrade.jpg',
       tag: 'Infrastructure',
-      route: '/app/propozar',
+      route: '/app/dvote',
       link: 'https://explorer.myceliumlabs.xyz/'
    },
    {
