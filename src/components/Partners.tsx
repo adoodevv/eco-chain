@@ -9,6 +9,7 @@ const Partners = () => {
       { name: 'Othentic', logo: '/logos/othentic.png' },
       { name: 'Avail', logo: '/logos/avail.png' },
       { name: 'Eigen Layer', logo: '/logos/eigen-layer.png' },
+      { name: 'Quicknode', logo: '/logos/quicknode.png' },
    ]
 
    return (
