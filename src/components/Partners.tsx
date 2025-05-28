@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import Image from 'next/image'
 
 const Partners = () => {
    const partners = [
@@ -7,7 +7,6 @@ const Partners = () => {
       { name: 'UNICEF', logo: '/logos/unicef.png' },
       { name: 'Polymer', logo: '/logos/polymer.svg' },
       { name: 'Othentic', logo: '/logos/othentic.png' },
-      { name: 'Lucid', logo: '/logos/image.png' },
       { name: 'Avail', logo: '/logos/avail.png' },
       { name: 'Eigen Layer', logo: '/logos/eigen-layer.png' },
    ]
@@ -21,14 +20,22 @@ const Partners = () => {
                   key={partner.name}
                   className="w-full max-w-[200px] h-20 flex items-center justify-center transition-transform duration-300 hover:scale-105"
                >
-                  <img
+                  <Image
                      src={partner.logo}
+                     width={400}
+                     height={400}
                      alt={`${partner.name} logo`}
-                     loading="lazy"
                      className="max-w-full max-h-full object-contain filter grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
                   />
                </div>
             ))}
+            <Image
+               src="/logos/lucid.png"
+               width={100}
+               height={100}
+               alt="Lucid logo"
+               className="max-w-full max-h-full rounded-full object-contain filter grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+            />
          </div>
       </div>
    )

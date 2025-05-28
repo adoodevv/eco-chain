@@ -16,6 +16,46 @@ export const apps = [
       link: 'https://blockscout.com/'
    },
    {
+      title: 'Pinax',
+      description: "Indexing. Chain onboarding. Dapp chains. Rollups. Since 2018, we've engineered end- to - end blockchain data processing and analytics tools, to help build the decentralized future",
+      image: '/images/pinax.jpg',
+      tag: 'Infrastructure',
+      route: '/apps/pinax',
+      link: 'https://pinax.network/en/solutions/enterprise-blockchain/'
+   },
+   {
+      title: 'QuickNode',
+      description: 'We make it simple to power your blockchain applications and scale up as you grow. From elastic APIs, to powerful tools & analytics, all at your command through a simple control panel',
+      image: '/images/quicknode.jpg',
+      tag: 'Infrastructure',
+      route: '/apps/quicknode',
+      link: 'https://www.quicknode.com/'
+   },
+   {
+      title: 'Reclaim Protocol',
+      description: 'Omni Channel to Get any Data from any website around the World. Compliance Baked-In Never need to store sensitive user information like login Credentials on your Backend',
+      image: '/images/reclaim.jpg',
+      tag: 'Infrastructure',
+      route: '/apps/reclaim',
+      link: 'https://dev.reclaimprotocol.org/'
+   },
+   {
+      title: 'ThirdWeb',
+      description: 'Build onchain apps, games, and agents with reliable wallet infrastructure, practical dev tools & in-depth onchain data: for all builders, on every EVM',
+      image: '/images/thirdweb.jpg',
+      tag: 'Infrastructure',
+      route: '/apps/thirdweb',
+      link: 'https://thirdweb.com/'
+   },
+   {
+      title: 'Nectafi',
+      description: 'Necta automates and optimizes your stablecoin yield strategies across multiple DeFi protocols. Maximize returns 24/7 with no manual tracking – fully on-chain and self-custodial',
+      image: '/images/nectafi.jpg',
+      tag: 'Finance',
+      route: '/apps/nectafi',
+      link: 'https://nectafi.xyz/'
+   },
+   {
       title: 'Avail Project',
       description: 'Avail is a horizontally scalable, trust-minimized infrastructure network enabling seamless cross-chain interaction, transaction validation, and native liquidity interoperability',
       image: '/images/avail.png',
@@ -62,46 +102,6 @@ export const apps = [
       tag: 'Infrastructure',
       route: '/apps/znsconnect',
       link: 'https://www.znsconnect.io/'
-   },
-   {
-      title: 'Pinax',
-      description: "Indexing. Chain onboarding. Dapp chains. Rollups. Since 2018, we've engineered end- to - end blockchain data processing and analytics tools, to help build the decentralized future",
-      image: '/images/pinax.jpg',
-      tag: 'Infrastructure',
-      route: '/apps/pinax',
-      link: 'https://pinax.network/en/solutions/enterprise-blockchain/'
-   },
-   {
-      title: 'QuickNode',
-      description: 'We make it simple to power your blockchain applications and scale up as you grow. From elastic APIs, to powerful tools & analytics, all at your command through a simple control panel',
-      image: '/images/quicknode.jpg',
-      tag: 'Infrastructure',
-      route: '/apps/quicknode',
-      link: 'https://www.quicknode.com/'
-   },
-   {
-      title: 'Reclaim Protocol',
-      description: 'Omni Channel to Get any Data from any website around the World. Compliance Baked-In Never need to store sensitive user information like login Credentials on your Backend',
-      image: '/images/reclaim.jpg',
-      tag: 'Infrastructure',
-      route: '/apps/reclaim',
-      link: 'https://dev.reclaimprotocol.org/'
-   },
-   {
-      title: 'ThirdWeb',
-      description: 'Build onchain apps, games, and agents with reliable wallet infrastructure, practical dev tools & in-depth onchain data: for all builders, on every EVM',
-      image: '/images/thirdweb.jpg',
-      tag: 'Infrastructure',
-      route: '/apps/thirdweb',
-      link: 'https://thirdweb.com/'
-   },
-   {
-      title: 'Nectafi',
-      description: 'Necta automates and optimizes your stablecoin yield strategies across multiple DeFi protocols. Maximize returns 24/7 with no manual tracking – fully on-chain and self-custodial',
-      image: '/images/nectafi.jpg',
-      tag: 'Finance',
-      route: '/apps/nectafi',
-      link: 'https://nectafi.xyz/'
    },
    {
       title: 'Mycelium Portal',
